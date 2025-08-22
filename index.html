@@ -513,76 +513,89 @@
 
                     <!-- Value Contributions Section -->
                     <section id="value-contributions-section" class="content-section hidden">
-                        <!-- AI-Powered Value Calculator -->
+                        <!-- Advanced AI-Powered Value Calculator -->
                         <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-6">AI-Powered Partnership Value Calculator</h3>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-6">Advanced AI-Powered Partnership Value Calculator</h3>
                             
-                            <!-- Input Variables -->
+                            <!-- Business Process Analysis -->
                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                                 <div class="space-y-4">
-                                    <h4 class="font-semibold text-gray-700">Contract Parameters</h4>
+                                    <h4 class="font-semibold text-gray-700">Contract & Market Parameters</h4>
                                     <div class="space-y-3">
                                         <div>
                                             <label class="block text-sm font-medium text-gray-600 mb-1">Contract Value ($)</label>
-                                            <input type="number" id="contract-value" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="1000000" value="1000000">
+                                            <input type="number" id="ai-contract-value" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="1000000" value="1000000">
                                         </div>
                                         <div>
                                             <label class="block text-sm font-medium text-gray-600 mb-1">Contract Duration (months)</label>
-                                            <input type="number" id="contract-duration" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="12" value="12">
+                                            <input type="number" id="ai-contract-duration" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="12" value="12">
                                         </div>
                                         <div>
                                             <label class="block text-sm font-medium text-gray-600 mb-1">Technical Complexity (1-10)</label>
-                                            <input type="range" id="technical-complexity" min="1" max="10" value="7" class="w-full">
-                                            <div class="text-sm text-gray-500 text-center" id="complexity-display">7</div>
+                                            <input type="range" id="ai-technical-complexity" min="1" max="10" value="7" class="w-full">
+                                            <div class="text-sm text-gray-500 text-center" id="ai-complexity-display">7</div>
                                         </div>
                                         <div>
                                             <label class="block text-sm font-medium text-gray-600 mb-1">Agency Type</label>
-                                            <select id="agency-type" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                            <select id="ai-agency-type" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                                                 <option value="dod">Department of Defense</option>
                                                 <option value="civilian">Civilian Agency</option>
                                                 <option value="intel">Intelligence Community</option>
                                                 <option value="healthcare">Healthcare/VA</option>
                                             </select>
                                         </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-600 mb-1">Competition Level</label>
+                                            <select id="competition-level" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                                <option value="low">Low (2-3 bidders)</option>
+                                                <option value="medium" selected>Medium (4-6 bidders)</option>
+                                                <option value="high">High (7+ bidders)</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 
                                 <div class="space-y-4">
-                                    <h4 class="font-semibold text-gray-700">Partnership Weights</h4>
-                                    <div class="space-y-3">
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-600 mb-1">St Michael Enterprises (%)</label>
-                                            <input type="range" id="stmichael-weight" min="0" max="100" value="35" class="w-full">
-                                            <div class="text-sm text-gray-500 text-center" id="stmichael-display">35%</div>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-600 mb-1">Republic Capital Access (%)</label>
-                                            <input type="range" id="republic-weight" min="0" max="100" value="30" class="w-full">
-                                            <div class="text-sm text-gray-500 text-center" id="republic-display">30%</div>
-                                        </div>
-                                        <div>
-                                            <label class="block text-sm font-medium text-gray-600 mb-1">Aliff Capital (%)</label>
-                                            <input type="range" id="aliff-weight" min="0" max="100" value="35" class="w-full">
-                                            <div class="text-sm text-gray-500 text-center" id="aliff-display">35%</div>
-                                        </div>
+                                    <h4 class="font-semibold text-gray-700">Business Process Responsibility Matrix</h4>
+                                    <div class="space-y-3 max-h-80 overflow-y-auto" id="process-matrix">
+                                        <!-- Process responsibility assignments will be populated here -->
                                     </div>
                                     
                                     <div class="flex space-x-2 mt-4">
-                                        <button id="calculate-value" class="flex-1 text-white px-4 py-2 rounded-lg font-semibold" style="background-color: #0a3161;">
-                                            Calculate Value
+                                        <button id="ai-analyze" class="flex-1 text-white px-4 py-2 rounded-lg font-semibold" style="background-color: #0a3161;">
+                                            AI Analyze & Calculate
                                         </button>
-                                        <button id="ai-optimize" class="flex-1 text-white px-4 py-2 rounded-lg font-semibold" style="background-color: #b31942;">
-                                            AI Optimize
+                                        <button id="market-benchmark" class="flex-1 text-white px-4 py-2 rounded-lg font-semibold" style="background-color: #b31942;">
+                                            Market Benchmark
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             
-                            <!-- Results Display -->
-                            <div id="calculation-results" class="bg-gray-50 rounded-lg p-4 hidden">
-                                <h4 class="font-semibold text-gray-700 mb-4">Value Analysis Results</h4>
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="results-grid">
-                                    <!-- Results will be dynamically populated -->
+                            <!-- AI Analysis Results -->
+                            <div id="ai-analysis-results" class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 hidden">
+                                <h4 class="font-semibold text-gray-800 mb-4">AI Market Analysis & Value Distribution</h4>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-700 mb-3">Recommended Value Distribution</h5>
+                                        <div class="space-y-2" id="ai-value-distribution">
+                                            <!-- AI-generated distribution will appear here -->
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-700 mb-3">Market-Based Rationale</h5>
+                                        <div class="text-sm text-gray-700 space-y-2" id="ai-explanation">
+                                            <!-- AI-generated explanation will appear here -->
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Process Impact Analysis -->
+                                <div class="mt-6 pt-6 border-t border-gray-200">
+                                    <h5 class="font-semibold text-gray-700 mb-3">Process Impact Analysis</h5>
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="process-impact">
+                                        <!-- Process impact metrics will appear here -->
+                                    </div>
                                 </div>
                             </div>
                         </div>

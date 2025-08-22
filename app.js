@@ -201,6 +201,8 @@ class FederalDashboard {
     initializeValueContributions() {
         // Initialize value calculator
         this.setupValueCalculator();
+        // Initialize advanced AI calculator
+        this.setupAdvancedAICalculator();
         // Initialize charts with proper timing
         setTimeout(() => {
             this.initValueCharts();
@@ -328,6 +330,482 @@ class FederalDashboard {
 
         // Update charts with new data
         this.updateValueCharts([stmichaelWeight, republicWeight, aliffWeight]);
+    }
+
+    setupAdvancedAICalculator() {
+        // Business processes that determine value distribution
+        const businessProcesses = [
+            { id: 'business-development', name: 'Business Development & Lead Generation', weight: 15 },
+            { id: 'proposal-writing', name: 'Proposal Writing & Submission', weight: 12 },
+            { id: 'technical-execution', name: 'Technical Execution & Delivery', weight: 18 },
+            { id: 'financial-management', name: 'Financial Management & Funding', weight: 14 },
+            { id: 'compliance-management', name: 'Compliance & Regulatory Management', weight: 10 },
+            { id: 'project-management', name: 'Project Management & QA', weight: 8 },
+            { id: 'customer-relations', name: 'Customer Relationship Management', weight: 7 },
+            { id: 'procurement-supply', name: 'Procurement & Supply Chain', weight: 6 },
+            { id: 'hr-talent', name: 'HR & Talent Management', weight: 5 },
+            { id: 'innovation-strategy', name: 'Innovation & Strategic Planning', weight: 5 }
+        ];
+
+        // Populate process matrix
+        const processMatrix = document.getElementById('process-matrix');
+        if (processMatrix) {
+            processMatrix.innerHTML = businessProcesses.map(process => `
+                <div class="bg-white rounded-lg p-3 border border-gray-200">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-sm font-medium text-gray-700">${process.name}</span>
+                        <span class="text-xs text-gray-500">${process.weight}% weight</span>
+                    </div>
+                    <select id="${process.id}-responsibility" class="w-full text-xs px-2 py-1 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500">
+                        <option value="stmichael">St Michael Enterprises</option>
+                        <option value="republic">Republic Capital Access</option>
+                        <option value="aliff" selected>Aliff Capital</option>
+                        <option value="shared-sm-rc">Shared: St Michael + Republic</option>
+                        <option value="shared-sm-ac">Shared: St Michael + Aliff</option>
+                        <option value="shared-rc-ac">Shared: Republic + Aliff</option>
+                        <option value="shared-all">Shared: All Partners</option>
+                    </select>
+                </div>
+            `).join('');
+
+            // Set default responsibilities based on known capabilities
+            this.setDefaultResponsibilities();
+        }
+
+        // Setup complexity slider display
+        const complexitySlider = document.getElementById('ai-technical-complexity');
+        const complexityDisplay = document.getElementById('ai-complexity-display');
+        if (complexitySlider && complexityDisplay) {
+            complexitySlider.addEventListener('input', (e) => {
+                complexityDisplay.textContent = e.target.value;
+            });
+        }
+
+        // Setup AI analyze button
+        const aiAnalyzeBtn = document.getElementById('ai-analyze');
+        if (aiAnalyzeBtn) {
+            aiAnalyzeBtn.addEventListener('click', () => this.performAIAnalysis());
+        }
+
+        // Setup market benchmark button
+        const marketBenchmarkBtn = document.getElementById('market-benchmark');
+        if (marketBenchmarkBtn) {
+            marketBenchmarkBtn.addEventListener('click', () => this.performMarketBenchmark());
+        }
+    }
+
+    setDefaultResponsibilities() {
+        // Set intelligent defaults based on partner capabilities
+        const defaults = {
+            'business-development': 'aliff',
+            'proposal-writing': 'aliff',
+            'technical-execution': 'stmichael',
+            'financial-management': 'republic',
+            'compliance-management': 'shared-sm-ac',
+            'project-management': 'stmichael',
+            'customer-relations': 'stmichael',
+            'procurement-supply': 'aliff',
+            'hr-talent': 'aliff',
+            'innovation-strategy': 'aliff'
+        };
+
+        Object.entries(defaults).forEach(([processId, responsibility]) => {
+            const select = document.getElementById(`${processId}-responsibility`);
+            if (select) {
+                select.value = responsibility;
+            }
+        });
+    }
+
+    async performAIAnalysis() {
+        // Collect all input data
+        const contractValue = parseFloat(document.getElementById('ai-contract-value').value) || 0;
+        const duration = parseFloat(document.getElementById('ai-contract-duration').value) || 1;
+        const complexity = parseFloat(document.getElementById('ai-technical-complexity').value) || 1;
+        const agencyType = document.getElementById('ai-agency-type').value;
+        const competitionLevel = document.getElementById('competition-level').value;
+
+        // Collect process responsibilities
+        const processResponsibilities = {};
+        const businessProcesses = [
+            'business-development', 'proposal-writing', 'technical-execution', 'financial-management',
+            'compliance-management', 'project-management', 'customer-relations', 'procurement-supply',
+            'hr-talent', 'innovation-strategy'
+        ];
+
+        businessProcesses.forEach(processId => {
+            const select = document.getElementById(`${processId}-responsibility`);
+            if (select) {
+                processResponsibilities[processId] = select.value;
+            }
+        });
+
+        // Calculate AI-based distribution
+        const analysis = this.calculateAIDistribution(contractValue, duration, complexity, agencyType, competitionLevel, processResponsibilities);
+        
+        // Display results
+        this.displayAIAnalysis(analysis);
+        
+        // Try to get AI explanation (if OpenAI is available)
+        this.getAIExplanation(analysis, contractValue, agencyType, competitionLevel);
+    }
+
+    calculateAIDistribution(contractValue, duration, complexity, agencyType, competitionLevel, responsibilities) {
+        // Process weights
+        const processWeights = {
+            'business-development': 15,
+            'proposal-writing': 12,
+            'technical-execution': 18,
+            'financial-management': 14,
+            'compliance-management': 10,
+            'project-management': 8,
+            'customer-relations': 7,
+            'procurement-supply': 6,
+            'hr-talent': 5,
+            'innovation-strategy': 5
+        };
+
+        // Calculate base allocation based on responsibilities
+        let stmichaelScore = 0;
+        let republicScore = 0;
+        let aliffScore = 0;
+
+        Object.entries(responsibilities).forEach(([processId, responsibility]) => {
+            const weight = processWeights[processId];
+            
+            switch(responsibility) {
+                case 'stmichael':
+                    stmichaelScore += weight;
+                    break;
+                case 'republic':
+                    republicScore += weight;
+                    break;
+                case 'aliff':
+                    aliffScore += weight;
+                    break;
+                case 'shared-sm-rc':
+                    stmichaelScore += weight * 0.6;
+                    republicScore += weight * 0.4;
+                    break;
+                case 'shared-sm-ac':
+                    stmichaelScore += weight * 0.5;
+                    aliffScore += weight * 0.5;
+                    break;
+                case 'shared-rc-ac':
+                    republicScore += weight * 0.5;
+                    aliffScore += weight * 0.5;
+                    break;
+                case 'shared-all':
+                    stmichaelScore += weight * 0.4;
+                    republicScore += weight * 0.3;
+                    aliffScore += weight * 0.3;
+                    break;
+            }
+        });
+
+        // Apply market adjustments
+        const marketMultipliers = this.getMarketMultipliers(contractValue, complexity, agencyType, competitionLevel);
+        
+        stmichaelScore *= marketMultipliers.stmichael;
+        republicScore *= marketMultipliers.republic;
+        aliffScore *= marketMultipliers.aliff;
+
+        // Normalize to 100%
+        const total = stmichaelScore + republicScore + aliffScore;
+        const distribution = {
+            stmichael: Math.round((stmichaelScore / total) * 100),
+            republic: Math.round((republicScore / total) * 100),
+            aliff: Math.round((aliffScore / total) * 100)
+        };
+
+        // Ensure total is exactly 100%
+        const currentTotal = distribution.stmichael + distribution.republic + distribution.aliff;
+        if (currentTotal !== 100) {
+            const largest = Math.max(distribution.stmichael, distribution.republic, distribution.aliff);
+            if (distribution.stmichael === largest) distribution.stmichael += (100 - currentTotal);
+            else if (distribution.republic === largest) distribution.republic += (100 - currentTotal);
+            else distribution.aliff += (100 - currentTotal);
+        }
+
+        return {
+            distribution,
+            marketMultipliers,
+            processImpacts: this.calculateProcessImpacts(responsibilities, processWeights),
+            reasoning: this.generateReasoningPoints(distribution, marketMultipliers, agencyType, competitionLevel)
+        };
+    }
+
+    getMarketMultipliers(contractValue, complexity, agencyType, competitionLevel) {
+        let stmichael = 1.0;
+        let republic = 1.0;
+        let aliff = 1.0;
+
+        // Contract value adjustments
+        if (contractValue > 10000000) {
+            republic += 0.2; // Large contracts need more financing
+            aliff += 0.15; // Complex business development for large deals
+        } else if (contractValue < 500000) {
+            aliff += 0.3; // Small contracts rely heavily on business development
+            stmichael -= 0.1;
+        }
+
+        // Complexity adjustments
+        if (complexity >= 8) {
+            stmichael += 0.25; // High complexity needs technical execution
+            aliff -= 0.1;
+        } else if (complexity <= 4) {
+            aliff += 0.2; // Simple contracts can leverage business generation
+            stmichael -= 0.15;
+        }
+
+        // Agency type adjustments
+        switch(agencyType) {
+            case 'dod':
+                stmichael += 0.15; // DoD requires strong technical capabilities
+                aliff += 0.1; // Business connections important for DoD
+                break;
+            case 'intel':
+                stmichael += 0.2; // Intelligence requires high technical standards
+                republic += 0.1; // Security clearance funding
+                break;
+            case 'healthcare':
+                aliff += 0.15; // Healthcare market requires strong business development
+                break;
+        }
+
+        // Competition level adjustments
+        switch(competitionLevel) {
+            case 'high':
+                aliff += 0.25; // High competition needs strong business development
+                republic += 0.1; // Competitive pricing important
+                break;
+            case 'low':
+                stmichael += 0.1; // Low competition focuses on execution quality
+                aliff -= 0.05;
+                break;
+        }
+
+        return { stmichael, republic, aliff };
+    }
+
+    calculateProcessImpacts(responsibilities, processWeights) {
+        const impacts = { stmichael: [], republic: [], aliff: [] };
+        
+        Object.entries(responsibilities).forEach(([processId, responsibility]) => {
+            const processName = processId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            const weight = processWeights[processId];
+            
+            if (responsibility === 'stmichael') {
+                impacts.stmichael.push({ process: processName, weight });
+            } else if (responsibility === 'republic') {
+                impacts.republic.push({ process: processName, weight });
+            } else if (responsibility === 'aliff') {
+                impacts.aliff.push({ process: processName, weight });
+            }
+        });
+
+        return impacts;
+    }
+
+    generateReasoningPoints(distribution, multipliers, agencyType, competitionLevel) {
+        const points = [];
+        
+        if (distribution.aliff > 35) {
+            points.push("Business generation activities and market development drive significant value creation");
+        }
+        if (distribution.stmichael > 40) {
+            points.push("Technical execution and delivery capabilities are critical for project success");
+        }
+        if (distribution.republic > 35) {
+            points.push("Financial resources and capital access provide substantial competitive advantage");
+        }
+        
+        if (agencyType === 'dod') {
+            points.push("DoD contracts require specialized technical capabilities and compliance expertise");
+        }
+        
+        if (competitionLevel === 'high') {
+            points.push("High competition environment demands superior business development and competitive positioning");
+        }
+
+        return points;
+    }
+
+    displayAIAnalysis(analysis) {
+        const resultsDiv = document.getElementById('ai-analysis-results');
+        const distributionDiv = document.getElementById('ai-value-distribution');
+        const explanationDiv = document.getElementById('ai-explanation');
+        const processImpactDiv = document.getElementById('process-impact');
+
+        if (resultsDiv) {
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Display value distribution
+        if (distributionDiv) {
+            distributionDiv.innerHTML = `
+                <div class="space-y-2">
+                    <div class="flex justify-between items-center p-3 bg-blue-100 rounded-lg">
+                        <span class="font-medium">St Michael Enterprises</span>
+                        <span class="font-bold text-blue-800">${analysis.distribution.stmichael}%</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-red-100 rounded-lg">
+                        <span class="font-medium">Republic Capital Access</span>
+                        <span class="font-bold text-red-800">${analysis.distribution.republic}%</span>
+                    </div>
+                    <div class="flex justify-between items-center p-3 bg-green-100 rounded-lg">
+                        <span class="font-medium">Aliff Capital</span>
+                        <span class="font-bold text-green-800">${analysis.distribution.aliff}%</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Display reasoning
+        if (explanationDiv) {
+            explanationDiv.innerHTML = `
+                <div class="space-y-2">
+                    ${analysis.reasoning.map(point => `
+                        <div class="flex items-start space-x-2">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span>${point}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Display process impacts
+        if (processImpactDiv) {
+            processImpactDiv.innerHTML = `
+                <div class="text-center p-4 bg-blue-50 rounded-lg">
+                    <div class="text-lg font-bold text-blue-800">${analysis.processImpacts.stmichael.length}</div>
+                    <div class="text-sm text-blue-600">Primary Processes</div>
+                    <div class="text-xs text-blue-500">St Michael</div>
+                </div>
+                <div class="text-center p-4 bg-red-50 rounded-lg">
+                    <div class="text-lg font-bold text-red-800">${analysis.processImpacts.republic.length}</div>
+                    <div class="text-sm text-red-600">Primary Processes</div>
+                    <div class="text-xs text-red-500">Republic Capital</div>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded-lg">
+                    <div class="text-lg font-bold text-green-800">${analysis.processImpacts.aliff.length}</div>
+                    <div class="text-sm text-green-600">Primary Processes</div>
+                    <div class="text-xs text-green-500">Aliff Capital</div>
+                </div>
+            `;
+        }
+
+        // Update charts with new distribution
+        this.updateValueCharts([analysis.distribution.stmichael, analysis.distribution.republic, analysis.distribution.aliff]);
+    }
+
+    async getAIExplanation(analysis, contractValue, agencyType, competitionLevel) {
+        try {
+            const prompt = `As a federal contracting expert, explain why this partnership value distribution is optimal:
+
+St Michael Enterprises: ${analysis.distribution.stmichael}%
+Republic Capital Access: ${analysis.distribution.republic}%
+Aliff Capital: ${analysis.distribution.aliff}%
+
+Contract Details:
+- Value: $${contractValue.toLocaleString()}
+- Agency: ${agencyType.toUpperCase()}
+- Competition: ${competitionLevel}
+
+Provide 3-4 market-based rules that justify this distribution.`;
+
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: prompt,
+                    context: 'value_analysis'
+                })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const explanationDiv = document.getElementById('ai-explanation');
+                if (explanationDiv && data.response) {
+                    explanationDiv.innerHTML = `
+                        <div class="bg-white rounded-lg p-4 border border-gray-200">
+                            <h6 class="font-semibold text-gray-800 mb-2">AI Market Analysis</h6>
+                            <div class="text-sm text-gray-700 whitespace-pre-line">${data.response}</div>
+                        </div>
+                    `;
+                }
+            }
+        } catch (error) {
+            console.log('AI explanation not available:', error.message);
+        }
+    }
+
+    performMarketBenchmark() {
+        // Simulate market benchmark analysis
+        const benchmarkData = this.generateMarketBenchmark();
+        this.displayMarketBenchmark(benchmarkData);
+    }
+
+    generateMarketBenchmark() {
+        return {
+            industryAverages: {
+                primeContractor: 55,
+                financialPartner: 25,
+                subcontractor: 20
+            },
+            competitiveFactors: [
+                'Technical execution capabilities drive 40-60% of value in federal contracting',
+                'Financial backing represents 20-30% of partnership value',
+                'Business development and market access account for 20-35% of value'
+            ],
+            marketTrends: [
+                'Increasing emphasis on past performance and technical capabilities',
+                'Growing importance of financial stability for large contracts',
+                'Business development relationships becoming more critical in competitive markets'
+            ]
+        };
+    }
+
+    displayMarketBenchmark(benchmark) {
+        const explanationDiv = document.getElementById('ai-explanation');
+        if (explanationDiv) {
+            explanationDiv.innerHTML = `
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg p-4 border border-gray-200">
+                        <h6 class="font-semibold text-gray-800 mb-2">Industry Benchmarks</h6>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span>Prime Contractor:</span>
+                                <span class="font-medium">${benchmark.industryAverages.primeContractor}%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Financial Partner:</span>
+                                <span class="font-medium">${benchmark.industryAverages.financialPartner}%</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Subcontractor/Support:</span>
+                                <span class="font-medium">${benchmark.industryAverages.subcontractor}%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-4 border border-gray-200">
+                        <h6 class="font-semibold text-gray-800 mb-2">Market Rules</h6>
+                        <div class="space-y-2 text-sm">
+                            ${benchmark.competitiveFactors.map(factor => `
+                                <div class="flex items-start space-x-2">
+                                    <span class="text-blue-500 mt-1">•</span>
+                                    <span>${factor}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
     }
 
     aiOptimizeWeights() {
