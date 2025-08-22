@@ -338,16 +338,16 @@ git push origin feature/amazing-new-feature
 ### 🏢 **St Michael LLC**
 **Federal Contracting Excellence Since 2024**
 
-📧 **Email:** contact@stmichaelenterprises.com  
+📧 **Email:** hello@aliffcapital.com  
 🌐 **Website:** [stmichaelenterprises.com](https://stmichaelenterprises.com)  
 💼 **LinkedIn:** [St Michael LLC](https://linkedin.com/company/stmichael-llc)  
 
 ### 🤝 **Partnership Inquiries**
 Interested in federal contracting partnerships? Let's connect!
 
-**Business Development:** partnerships@stmichaelenterprises.com  
-**Technical Consulting:** tech@stmichaelenterprises.com  
-**Investment Opportunities:** capital@stmichaelenterprises.com  
+**Business Development:** hello@aliffcapital.com  
+**Technical Consulting:** hello@aliffcapital.com  
+**Investment Opportunities:** hello@aliffcapital.com  
 
 </div>
 
@@ -356,7 +356,7 @@ Interested in federal contracting partnerships? Let's connect!
 ## 📜 **License**
 
 ```
-Copyright (c) 2024 St Michael LLC & Aliff Capital
+Copyright (c) 2025 Aliff Capital
 All rights reserved.
 
 This software is proprietary and confidential.
@@ -369,7 +369,7 @@ Unauthorized copying, distribution, or use is strictly prohibited.
 
 ### 🌟 **Built with Excellence**
 
-**St Michael LLC** × **Republic Capital Access** × **Aliff Capital**
+**Aliff Capital**
 
 *Securing Government Contracts Through Innovation*
 
