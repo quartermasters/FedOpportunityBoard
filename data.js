@@ -340,7 +340,7 @@ window.strategicToolkit = {
         {
             name: "OASIS+ On-Ramp Tracker",
             description: "Monitor continuous on-ramping opportunities starting FY2025 for OASIS+ domains",
-            icon: "activity"
+            icon: "target"
         },
         {
             name: "Prime Contractor Subcontracting Plans",
