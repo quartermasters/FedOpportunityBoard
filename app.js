@@ -670,7 +670,7 @@ class FederalDashboard {
                 <div class="space-y-2">
                     ${analysis.reasoning.map(point => `
                         <div class="flex items-start space-x-2">
-                            <span class="text-blue-500 mt-1">•</span>
+                            <i data-feather="check-circle" class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0"></i>
                             <span>${point}</span>
                         </div>
                     `).join('')}
@@ -756,7 +756,7 @@ Provide 3-4 market-based rules that justify this distribution.`;
         richText = richText.replace(/^\d+\.\s+(.+)$/gm, '<div class="flex items-start space-x-2 mb-2"><span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full">$1</span><span>$2</span></div>');
         
         // Convert bullet points (• - *)
-        richText = richText.replace(/^[•\-\*]\s+(.+)$/gm, '<div class="flex items-start space-x-2 mb-2"><span class="text-blue-500 font-bold">•</span><span>$1</span></div>');
+        richText = richText.replace(/^[•\-\*]\s+(.+)$/gm, '<div class="flex items-start space-x-2 mb-2"><i data-feather="arrow-right" class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0"></i><span>$1</span></div>');
         
         // Convert **bold** text
         richText = richText.replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-gray-800">$1</strong>');
@@ -834,7 +834,7 @@ Provide 3-4 market-based rules that justify this distribution.`;
                         <div class="space-y-2 text-sm">
                             ${benchmark.competitiveFactors.map(factor => `
                                 <div class="flex items-start space-x-2">
-                                    <span class="text-blue-500 mt-1">•</span>
+                                    <i data-feather="check-circle" class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0"></i>
                                     <span>${factor}</span>
                                 </div>
                             `).join('')}
