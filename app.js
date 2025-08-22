@@ -15,8 +15,29 @@ class FederalDashboard {
         this.populateStrategicToolkit();
         this.populateCostStrategy();
         
+        // Initialize splash screen
+        this.initSplashScreen();
+        
         // Initialize Feather icons
         feather.replace();
+    }
+
+    initSplashScreen() {
+        const splashScreen = document.getElementById('splash-screen');
+        if (!splashScreen) return;
+
+        // Initialize feather icons for splash screen immediately
+        setTimeout(() => {
+            feather.replace();
+        }, 100);
+
+        // Hide splash screen after animation completes
+        setTimeout(() => {
+            splashScreen.classList.add('splash-fade-out');
+            setTimeout(() => {
+                splashScreen.style.display = 'none';
+            }, 800);
+        }, 4000); // Show splash for 4 seconds
     }
 
     setupEventListeners() {
