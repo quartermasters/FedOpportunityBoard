@@ -237,7 +237,7 @@ class ChatWidget {
         const messagesContainer = document.getElementById('chat-messages');
         messagesContainer.innerHTML = `
             <div class="text-center text-gray-500 text-sm">
-                <p>Hello! I'm your AI assistant for federal contracting insights.</p>
+                <p>Hello! I'm St Michael -AI, your federal contracting assistant.</p>
                 <p>Ask me about contract vehicles, prime contractors, or cost strategies.</p>
             </div>
         `;
