@@ -417,69 +417,69 @@ window.costStrategy = {
     phases: [
         {
             name: "Direct Costs - Senior Consultants",
-            percentage: 28.6,
-            description: "Two senior consultants providing core technical expertise and project delivery capabilities",
-            budget: "$2,000/month",
+            percentage: 19.1,
+            description: "Three senior consultants providing core technical expertise and project delivery capabilities",
+            budget: "$2,100/month",
             duration: "Ongoing operations"
         },
         {
             name: "Administrative Operations",
-            percentage: 14.3,
-            description: "Management and administrative support including HR and general administration",
-            budget: "$1,000/month", 
+            percentage: 45.5,
+            description: "Comprehensive administrative support including Financial Management, HR, Research, Logistics, Procurement, technical writers, Compliance Executives, Legal Assistants",
+            budget: "$5,000/month", 
             duration: "Ongoing operations"
         },
         {
             name: "Infrastructure & Technology",
-            percentage: 32.9,
-            description: "Software tools, AI capabilities, hosting, office space, and utilities infrastructure",
+            percentage: 20.9,
+            description: "Software tools, AI capabilities, office space, utilities, and essential business software subscriptions",
             budget: "$2,300/month",
             duration: "Ongoing operations"
         },
         {
-            name: "Business Development & Professional Services",
-            percentage: 24.3,
-            description: "Marketing, sales activities, and professional legal/accounting services",
-            budget: "$1,700/month",
+            name: "Business Development & Operations",
+            percentage: 14.5,
+            description: "Procurement, outreach, vendor logistics, client acquisition, and miscellaneous operational expenses",
+            budget: "$1,600/month",
             duration: "Ongoing operations"
         }
     ],
     monthlyOperatingCost: {
-        total: 7000,
+        total: 11000,
         breakdown: {
-            directCosts: 2000,
-            indirectCosts: 5000
+            directCosts: 2100,
+            indirectCosts: 8900
         },
         details: {
-            "Senior Consultants (2)": {
-                amount: 2000,
+            "Senior Consultants (3)": {
+                amount: 2100,
                 type: "Labor",
-                description: "Loaded cost including salary, benefits, and taxes at $120K base salary with 1.35 multiplier"
+                description: "Loaded cost including salary, benefits, and taxes based on $120K average US salary with 1.35 multiplier"
             },
             "Administrative Salaries": {
-                amount: 1000,
+                amount: 5000,
                 type: "Labor", 
-                description: "Manager, HR, and administrative staff coverage"
+                description: "Financial Management, HR, Research, Logistics, Procurement, technical writers, Compliance Executives, Legal Assistants"
             },
             "Rent & Utilities": {
                 amount: 500,
                 type: "Overhead",
-                description: "Office space, internet, phone - co-working or virtual office solution"
+                description: "Office space, internet, phone - co-working or virtual office solution for new startup"
             },
             "Software & AI Tools": {
                 amount: 1800,
                 type: "Overhead",
-                description: "QuickBooks, AI platforms, hosting, business software subscriptions"
+                description: "QuickBooks, Slack, Asana, and other essential software subscriptions for business operations"
             },
-            "Marketing & Sales": {
+            "Procurement & Outreach": {
                 amount: 1200,
                 type: "Overhead", 
-                description: "Advertising, networking, website maintenance, client acquisition"
+                description: "Vendor and logistics coordination, budget for attracting and acquiring new clients"
             },
-            "Professional Fees": {
-                amount: 500,
+            "Miscellaneous": {
+                amount: 400,
                 type: "Overhead",
-                description: "Legal and accounting services retainer"
+                description: "Other operational expenses and contingency fund"
             }
         }
     },
@@ -551,8 +551,8 @@ window.marketData = {
         ]
     },
     costBreakdown: {
-        labels: ['Senior Consultants', 'Administrative', 'Software & AI', 'Office & Utilities', 'Marketing & Sales', 'Professional Fees'],
-        data: [28.6, 14.3, 25.7, 7.1, 17.1, 7.1],
-        colors: ['#0a3161', '#3B82F6', '#10B981', '#F59E0B', '#b31942', '#6B7280']
+        labels: ['Administrative', 'Senior Consultants', 'Software & AI', 'Procurement & Outreach', 'Office & Utilities', 'Miscellaneous'],
+        data: [45.5, 19.1, 16.4, 10.9, 4.5, 3.6],
+        colors: ['#b31942', '#0a3161', '#10B981', '#3B82F6', '#F59E0B', '#6B7280']
     }
 };

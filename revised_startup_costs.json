@@ -1,0 +1,93 @@
+[
+  {
+    "Unnamed: 0": "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": NaN,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Unnamed: 0": "Cost Component",
+    "Unnamed: 1": "Type",
+    "Unnamed: 2": "Details",
+    "Unnamed: 3": "Monthly Cost ($)",
+    "Unnamed: 4": "Justification"
+  },
+  {
+    "Unnamed: 0": "Direct Costs",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": NaN,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Unnamed: 0": "Senior Consultant (3 resources)",
+    "Unnamed: 1": "Labor",
+    "Unnamed: 2": "Loaded cost (salary + benefits)",
+    "Unnamed: 3": 2100,
+    "Unnamed: 4": "Assumes a loaded cost of $13,500/month per consultant based on an average US salary of $120,000/year and a 1.35 multiplier for benefits and taxes."
+  },
+  {
+    "Unnamed: 0": "Total Direct Costs",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": 2100,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Unnamed: 0": "Indirect Costs (Overhead)",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": NaN,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Unnamed: 0": "Administrative Salaries",
+    "Unnamed: 1": "Labor",
+    "Unnamed: 2": "Financial Management, HR, Research, Logistics, and Procurement, technical writers, Compliance Executives, Legal Assistants.  ",
+    "Unnamed: 3": 5000,
+    "Unnamed: 4": "Covers the loaded cost of a single part-time or full-time administrative staff member."
+  },
+  {
+    "Unnamed: 0": "Rent & Utilities",
+    "Unnamed: 1": "Overhead",
+    "Unnamed: 2": "Office space, internet, phone",
+    "Unnamed: 3": 500,
+    "Unnamed: 4": "Low-end estimate for a co-working space or virtual office solution for a new startup."
+  },
+  {
+    "Unnamed: 0": "General Software- AI and other tools ",
+    "Unnamed: 1": "Overhead",
+    "Unnamed: 2": "QuickBooks, Slack, Asana, etc.",
+    "Unnamed: 3": 1800,
+    "Unnamed: 4": "Essential software subscriptions for general business operations."
+  },
+  {
+    "Unnamed: 0": "Procurement and Outreach",
+    "Unnamed: 1": "Overhead",
+    "Unnamed: 2": "Vendor and Logistics",
+    "Unnamed: 3": 1200,
+    "Unnamed: 4": "Budget for attracting and acquiring new clients."
+  },
+  {
+    "Unnamed: 0": "Misc",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": 400,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Unnamed: 0": "Total Indirect Costs",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": 8900,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Unnamed: 0": "Total Monthly Operating Cost",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": 11000,
+    "Unnamed: 4": "Sum of all direct and indirect costs, representing the total monthly expense to run the company."
+  }
+]
