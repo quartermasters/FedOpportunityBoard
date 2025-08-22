@@ -432,7 +432,7 @@ class FederalDashboard {
                         },
                         {
                             label: 'Aliff Capital',
-                            data: [60, 50, 90, 75, 80, 85],
+                            data: [70, 60, 95, 85, 80, 90],
                             backgroundColor: 'rgba(16, 185, 129, 0.2)',
                             borderColor: '#10B981',
                             borderWidth: 2,
