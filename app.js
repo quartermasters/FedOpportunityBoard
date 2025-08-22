@@ -196,6 +196,12 @@ class FederalDashboard {
     }
 
     initValueContributionCharts() {
+        // Ensure Chart.js is loaded
+        if (typeof Chart === 'undefined') {
+            console.error('Chart.js not loaded');
+            return;
+        }
+
         // Partner Value Distribution Chart
         const partnerValueCtx = document.getElementById('partnerValueChart');
         if (partnerValueCtx) {
