@@ -1182,13 +1182,18 @@ Provide 3-4 market-based rules that justify this distribution.`;
         }
 
         // Add event listeners for tool buttons
-        this.setupToolkitEventListeners();
-        feather.replace();
+        // Ensure DOM is updated before attaching event listeners
+        setTimeout(() => {
+            this.setupToolkitEventListeners();
+            feather.replace();
+        }, 100);
     }
 
     setupToolkitEventListeners() {
         // AI research buttons for action plans
-        document.querySelectorAll('.ai-research-btn').forEach(btn => {
+        const aiButtons = document.querySelectorAll('.ai-research-btn');
+        console.log('Found AI research buttons:', aiButtons.length);
+        aiButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const title = btn.getAttribute('data-action-title');
