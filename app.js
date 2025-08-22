@@ -335,15 +335,21 @@ class FederalDashboard {
         const complexity = parseFloat(document.getElementById('technical-complexity').value) || 1;
         const agencyType = document.getElementById('agency-type').value;
 
-        // AI optimization logic based on contract parameters
-        let optimizedWeights = { stmichael: 45, republic: 30, aliff: 25 };
+        // AI optimization logic based on contract parameters (accounting for Aliff Capital's business generation role)
+        let optimizedWeights = { stmichael: 35, republic: 30, aliff: 35 };
 
         if (agencyType === 'dod' && complexity >= 8) {
-            optimizedWeights = { stmichael: 50, republic: 25, aliff: 25 };
+            // High complexity DoD contracts require St Michael's technical execution
+            optimizedWeights = { stmichael: 45, republic: 25, aliff: 30 };
         } else if (contractValue > 5000000) {
-            optimizedWeights = { stmichael: 40, republic: 40, aliff: 20 };
+            // Large contracts need Republic Capital's financial backing but Aliff's business generation is critical
+            optimizedWeights = { stmichael: 30, republic: 35, aliff: 35 };
         } else if (complexity <= 4) {
-            optimizedWeights = { stmichael: 35, republic: 35, aliff: 30 };
+            // Simple contracts can leverage Aliff's business generation and Republic's financing
+            optimizedWeights = { stmichael: 25, republic: 35, aliff: 40 };
+        } else {
+            // Standard contracts benefit most from Aliff's business generation capabilities
+            optimizedWeights = { stmichael: 30, republic: 30, aliff: 40 };
         }
 
         // Update sliders
@@ -376,7 +382,7 @@ class FederalDashboard {
                 data: {
                     labels: ['St Michael Enterprises', 'Republic Capital Access', 'Aliff Capital'],
                     datasets: [{
-                        data: [45, 30, 25],
+                        data: [35, 30, 35],
                         backgroundColor: ['#0a3161', '#b31942', '#10B981'],
                         borderWidth: 3,
                         borderColor: '#ffffff'
@@ -412,11 +418,11 @@ class FederalDashboard {
             new Chart(valueCapabilityCtx, {
                 type: 'radar',
                 data: {
-                    labels: ['Technical Execution', 'Financial Resources', 'Strategy & Planning', 'Market Access', 'Compliance', 'Innovation'],
+                    labels: ['Technical Execution', 'Financial Resources', 'Strategy & Planning', 'Market Access', 'Compliance', 'Business Generation'],
                     datasets: [
                         {
                             label: 'St Michael Enterprises',
-                            data: [95, 40, 60, 85, 60, 70],
+                            data: [95, 40, 60, 85, 60, 20],
                             backgroundColor: 'rgba(10, 49, 97, 0.2)',
                             borderColor: '#0a3161',
                             borderWidth: 2,
@@ -424,7 +430,7 @@ class FederalDashboard {
                         },
                         {
                             label: 'Republic Capital Access',
-                            data: [30, 95, 70, 80, 25, 60],
+                            data: [30, 95, 70, 80, 25, 15],
                             backgroundColor: 'rgba(179, 25, 66, 0.2)',
                             borderColor: '#b31942',
                             borderWidth: 2,
@@ -432,7 +438,7 @@ class FederalDashboard {
                         },
                         {
                             label: 'Aliff Capital',
-                            data: [70, 60, 95, 85, 80, 90],
+                            data: [70, 60, 95, 90, 80, 95],
                             backgroundColor: 'rgba(16, 185, 129, 0.2)',
                             borderColor: '#10B981',
                             borderWidth: 2,
