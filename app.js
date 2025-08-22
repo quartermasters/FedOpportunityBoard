@@ -1167,13 +1167,14 @@ Provide 3-4 market-based rules that justify this distribution.`;
                         </div>
                     </div>
                     <div class="flex-shrink-0 ml-3">
-                        <button class="ai-research-btn bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white p-2 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md group" 
+                        <button class="ai-research-btn bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-3 py-2 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md group flex flex-col items-center" 
                                 data-action-title="${step.title}" 
                                 data-action-description="${step.description}"
                                 data-action-timeline="${step.timeline}"
                                 data-action-priority="${step.priority}"
                                 title="AI Deep Research & Strategy Analysis">
-                            <i data-feather="brain" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                            <i data-feather="cpu" class="w-5 h-5 mb-1 group-hover:scale-110 transition-transform"></i>
+                            <span class="text-xs font-medium">AI Research</span>
                         </button>
                     </div>
                 </div>
