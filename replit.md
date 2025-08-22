@@ -15,7 +15,8 @@ The application is built as a Single Page Application (SPA) using vanilla JavaSc
 
 - **UI Framework**: Pure HTML5 with Tailwind CSS for styling and responsive design
 - **JavaScript Architecture**: Modular vanilla JavaScript with separate files for different concerns (app.js for main controller, charts.js for data visualization, chat.js for AI integration)
-- **Design System**: Glassmorphism sidebar with gradient overlays and smooth animations
+- **Design System**: Glassmorphism sidebar with St Michael LLC branding and smooth animations
+- **Brand Identity**: Official St Michael LLC logo integration with brand colors (Navy Blue #0a3161, Crimson Red #b31942)
 - **Data Visualization**: Chart.js library for interactive charts and market analytics
 - **Icons**: Feather Icons for consistent iconography
 - **Mobile-First Design**: Responsive layout with collapsible sidebar for mobile devices

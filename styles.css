@@ -15,9 +15,9 @@
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg, 
-        rgba(59, 130, 246, 0.8) 0%,
-        rgba(99, 102, 241, 0.9) 50%,
-        rgba(139, 69, 193, 0.8) 100%);
+        rgba(10, 49, 97, 0.9) 0%,
+        rgba(179, 25, 66, 0.8) 50%,
+        rgba(10, 49, 97, 0.9) 100%);
     z-index: -1;
 }
 
@@ -197,7 +197,7 @@ button:focus, input:focus, select:focus {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0a3161 0%, #b31942 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
