@@ -58,6 +58,12 @@
                                 Cost Strategy
                             </a>
                         </li>
+                        <li>
+                            <a href="#about-us" class="nav-item flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+                                <i data-feather="info" class="mr-3 w-5 h-5"></i>
+                                About Us
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 
@@ -312,6 +318,186 @@
                                 <h3 class="text-lg font-semibold text-gray-800 mb-4">Cost Optimization Recommendations</h3>
                                 <div id="cost-recommendations" class="space-y-3">
                                     <!-- Recommendations will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- About Us Section -->
+                    <section id="about-us-section" class="content-section hidden">
+                        <!-- Partnership Diagram -->
+                        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Partnership Structure</h3>
+                            
+                            <div class="partnership-diagram relative h-96 mb-8">
+                                <!-- St Michael LLC -->
+                                <div class="partner-node absolute top-4 left-1/2 transform -translate-x-1/2 cursor-pointer" data-partner="stmichael">
+                                    <div class="partner-circle w-24 h-24 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg transition-all duration-300" style="background: linear-gradient(135deg, #0a3161, #1a4177);">
+                                        <div class="text-center">
+                                            <div class="text-xs">St Michael</div>
+                                            <div class="text-xs font-normal">LLC</div>
+                                        </div>
+                                    </div>
+                                    <div class="partner-label text-center mt-2 text-sm font-semibold text-gray-700">Main Contractor</div>
+                                </div>
+
+                                <!-- Republic Capital Access -->
+                                <div class="partner-node absolute top-1/2 left-8 transform -translate-y-1/2 cursor-pointer" data-partner="republic">
+                                    <div class="partner-circle w-24 h-24 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg transition-all duration-300" style="background: linear-gradient(135deg, #b31942, #c9285a);">
+                                        <div class="text-center">
+                                            <div class="text-xs">Republic</div>
+                                            <div class="text-xs">Capital</div>
+                                            <div class="text-xs font-normal">Access</div>
+                                        </div>
+                                    </div>
+                                    <div class="partner-label text-center mt-2 text-sm font-semibold text-gray-700">Capital Provider</div>
+                                </div>
+
+                                <!-- Aliff Capital -->
+                                <div class="partner-node absolute top-1/2 right-8 transform -translate-y-1/2 cursor-pointer" data-partner="aliff">
+                                    <div class="partner-circle w-24 h-24 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg transition-all duration-300" style="background: linear-gradient(135deg, #10B981, #059669);">
+                                        <div class="text-center">
+                                            <div class="text-xs">Aliff</div>
+                                            <div class="text-xs font-normal">Capital</div>
+                                        </div>
+                                    </div>
+                                    <div class="partner-label text-center mt-2 text-sm font-semibold text-gray-700">Business Operations</div>
+                                </div>
+
+                                <!-- Connection Lines -->
+                                <svg class="absolute inset-0 w-full h-full pointer-events-none">
+                                    <line class="connection-line" x1="50%" y1="20%" x2="20%" y2="50%" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5">
+                                        <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                                    </line>
+                                    <line class="connection-line" x1="50%" y1="20%" x2="80%" y2="50%" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5">
+                                        <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                                    </line>
+                                    <line class="connection-line" x1="20%" y1="50%" x2="80%" y2="50%" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5">
+                                        <animate attributeName="stroke-dashoffset" values="0;10" dur="2s" repeatCount="indefinite"/>
+                                    </line>
+                                </svg>
+
+                                <!-- Central Hub -->
+                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                                    <div class="w-16 h-16 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg pulse-animation">
+                                        <i data-feather="zap" class="w-8 h-8"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Partner Details -->
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                            <!-- St Michael LLC Details -->
+                            <div id="stmichael-details" class="partner-detail bg-white rounded-lg shadow-lg p-6 border-l-4" style="border-color: #0a3161;">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-white mr-4" style="background-color: #0a3161;">
+                                        <i data-feather="briefcase" class="w-6 h-6"></i>
+                                    </div>
+                                    <h4 class="text-xl font-semibold text-gray-800">St Michael LLC</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-700 mb-2">Primary Role</h5>
+                                        <p class="text-sm text-gray-600">Main contractor responsible for proposal submission and contract performance</p>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-700 mb-2">Key Responsibilities</h5>
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Submit proposals to federal agencies</li>
+                                            <li>• Execute awarded contracts</li>
+                                            <li>• Maintain compliance with federal regulations</li>
+                                            <li>• Deliver project outcomes and deliverables</li>
+                                            <li>• Interface directly with government clients</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Republic Capital Access Details -->
+                            <div id="republic-details" class="partner-detail bg-white rounded-lg shadow-lg p-6 border-l-4" style="border-color: #b31942;">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-white mr-4" style="background-color: #b31942;">
+                                        <i data-feather="dollar-sign" class="w-6 h-6"></i>
+                                    </div>
+                                    <h4 class="text-xl font-semibold text-gray-800">Republic Capital Access</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-700 mb-2">Primary Role</h5>
+                                        <p class="text-sm text-gray-600">Strategic financing partner providing capital for contract performance</p>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-700 mb-2">Key Responsibilities</h5>
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Provide working capital for contract execution</li>
+                                            <li>• Offer project financing as loans</li>
+                                            <li>• Receive percentage of profits for capital injections</li>
+                                            <li>• Support cash flow management</li>
+                                            <li>• Enable rapid contract startup capabilities</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Aliff Capital Details -->
+                            <div id="aliff-details" class="partner-detail bg-white rounded-lg shadow-lg p-6 border-l-4" style="border-color: #10B981;">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full flex items-center justify-center text-white mr-4" style="background-color: #10B981;">
+                                        <i data-feather="settings" class="w-6 h-6"></i>
+                                    </div>
+                                    <h4 class="text-xl font-semibold text-gray-800">Aliff Capital</h4>
+                                </div>
+                                <div class="space-y-3">
+                                    <div>
+                                        <h5 class="font-semibold text-gray-700 mb-2">Primary Role</h5>
+                                        <p class="text-sm text-gray-600">Business operations and process management across UAE, Pakistan, and India</p>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-700 mb-2">Key Responsibilities</h5>
+                                        <ul class="text-sm text-gray-600 space-y-1">
+                                            <li>• Handle all business processes and operations</li>
+                                            <li>• Bear monthly operating costs ($11,000/month)</li>
+                                            <li>• Manage administrative functions</li>
+                                            <li>• Coordinate international team operations</li>
+                                            <li>• Provide technical and administrative support</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Partnership Benefits -->
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Partnership Advantages</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div class="text-center p-4 bg-blue-50 rounded-lg">
+                                    <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center" style="background-color: #0a3161;">
+                                        <i data-feather="zap" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Rapid Deployment</h4>
+                                    <p class="text-sm text-gray-600">Quick contract startup with dedicated capital and operations support</p>
+                                </div>
+                                <div class="text-center p-4 bg-red-50 rounded-lg">
+                                    <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center" style="background-color: #b31942;">
+                                        <i data-feather="shield" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Risk Mitigation</h4>
+                                    <p class="text-sm text-gray-600">Distributed responsibilities and shared expertise reduce project risks</p>
+                                </div>
+                                <div class="text-center p-4 bg-green-50 rounded-lg">
+                                    <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center" style="background-color: #10B981;">
+                                        <i data-feather="globe" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Global Resources</h4>
+                                    <p class="text-sm text-gray-600">International talent pool across UAE, Pakistan, and India</p>
+                                </div>
+                                <div class="text-center p-4 bg-purple-50 rounded-lg">
+                                    <div class="w-12 h-12 mx-auto mb-3 rounded-full flex items-center justify-center bg-purple-600">
+                                        <i data-feather="trending-up" class="w-6 h-6 text-white"></i>
+                                    </div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">Scalable Growth</h4>
+                                    <p class="text-sm text-gray-600">Flexible structure supports rapid scaling for larger contracts</p>
                                 </div>
                             </div>
                         </div>

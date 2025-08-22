@@ -119,6 +119,10 @@ class FederalDashboard {
             'cost-strategy': { 
                 title: 'Cost Strategy', 
                 subtitle: 'Cost analysis and optimization recommendations' 
+            },
+            'about-us': {
+                title: 'About Us',
+                subtitle: 'Partnership structure and organizational overview'
             }
         };
 
@@ -129,6 +133,13 @@ class FederalDashboard {
         }
 
         this.currentSection = sectionId;
+
+        // Initialize section-specific functionality
+        if (sectionId === 'market-overview') {
+            setTimeout(() => this.initializeCharts(), 100);
+        } else if (sectionId === 'about-us') {
+            setTimeout(() => this.initializeAboutUs(), 100);
+        }
 
         // Close mobile sidebar after navigation
         if (window.innerWidth < 1024) {
@@ -792,6 +803,56 @@ class FederalDashboard {
             `).join('');
         }
 
+        feather.replace();
+    }
+
+    initializeAboutUs() {
+        // Add interactive functionality to partnership diagram
+        const partnerNodes = document.querySelectorAll('.partner-node');
+        const partnerDetails = document.querySelectorAll('.partner-detail');
+
+        partnerNodes.forEach(node => {
+            node.addEventListener('mouseenter', () => {
+                const partnerId = node.getAttribute('data-partner');
+                const detailElement = document.getElementById(`${partnerId}-details`);
+                
+                // Reset all details
+                partnerDetails.forEach(detail => {
+                    detail.classList.remove('highlighted');
+                });
+                
+                // Highlight corresponding detail
+                if (detailElement) {
+                    detailElement.classList.add('highlighted');
+                }
+            });
+
+            node.addEventListener('mouseleave', () => {
+                partnerDetails.forEach(detail => {
+                    detail.classList.remove('highlighted');
+                });
+            });
+
+            node.addEventListener('click', () => {
+                const partnerId = node.getAttribute('data-partner');
+                const detailElement = document.getElementById(`${partnerId}-details`);
+                
+                if (detailElement) {
+                    detailElement.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                    
+                    // Add temporary highlight
+                    detailElement.classList.add('highlighted');
+                    setTimeout(() => {
+                        detailElement.classList.remove('highlighted');
+                    }, 2000);
+                }
+            });
+        });
+
+        // Re-initialize feather icons for the new section
         feather.replace();
     }
 
