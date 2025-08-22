@@ -416,7 +416,7 @@ class FederalDashboard {
                     datasets: [
                         {
                             label: 'St Michael Enterprises',
-                            data: [95, 40, 60, 85, 90, 70],
+                            data: [95, 40, 60, 85, 60, 70],
                             backgroundColor: 'rgba(10, 49, 97, 0.2)',
                             borderColor: '#0a3161',
                             borderWidth: 2,
@@ -424,7 +424,7 @@ class FederalDashboard {
                         },
                         {
                             label: 'Republic Capital Access',
-                            data: [30, 95, 70, 80, 85, 60],
+                            data: [30, 95, 70, 80, 25, 60],
                             backgroundColor: 'rgba(179, 25, 66, 0.2)',
                             borderColor: '#b31942',
                             borderWidth: 2,
@@ -432,7 +432,7 @@ class FederalDashboard {
                         },
                         {
                             label: 'Aliff Capital',
-                            data: [60, 50, 90, 75, 65, 85],
+                            data: [60, 50, 90, 75, 80, 85],
                             backgroundColor: 'rgba(16, 185, 129, 0.2)',
                             borderColor: '#10B981',
                             borderWidth: 2,
