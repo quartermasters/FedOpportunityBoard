@@ -1,0 +1,60 @@
+{
+  "project": "St Michael LLC Federal Opportunities Dashboard",
+  "description": "A modern, dashboard-style SPA for federal subcontracting market analysis, contract vehicles, primes, cost strategy, and strategic toolkit. Includes an AI assistant chat widget.",
+  "frontend": {
+    "tech": ["HTML", "TailwindCSS", "Chart.js", "Vanilla JS"],
+    "features": [
+      "Sidebar navigation (glassmorphism)",
+      "Sections: Market Overview, Contract Vehicles, Prime Contractors, Strategic Toolkit, Cost Strategy",
+      "Interactive charts for cost breakdowns and market data",
+      "Expandable/collapsible sections for details",
+      "Search/filter for contract vehicles and primes",
+      "Responsive design for desktop and mobile",
+      "AI chat widget for user Q&A"
+    ],
+    "data": [
+      "Contract vehicles, primes, cost phases, toolkit items, action plan steps (all hardcoded in JS)"
+    ]
+  },
+  "backend": {
+    "node": {
+      "file": "server.js",
+      "tech": ["Node.js", "Express", "CORS"],
+      "routes": [
+        "GET /health - health check",
+        "POST /api/chat - proxy to OpenAI Chat Completions API (requires OPENAI_API_KEY env var)"
+      ],
+      "static": "Serves all files in project root for SPA"
+    },
+    "php": {
+      "file": "api/chat.php",
+      "tech": ["PHP", "cURL"],
+      "routes": [
+        "POST /api/chat.php - proxy to OpenAI Chat Completions API (uses OPENAI_API_KEY from env or config.php)"
+      ],
+      "config": "api/config.php (sample provided as config.sample.php)"
+    }
+  },
+  "ai_integration": {
+    "frontend": "AI chat widget calls /api/chat (Node) or /api/chat.php (PHP) with user messages",
+    "backend": "Proxies user messages to OpenAI API, returns assistant reply"
+  },
+  "setup": {
+    "node": [
+      "Install Node.js",
+      "Run 'npm install' in project folder",
+      "Set OPENAI_API_KEY in environment",
+      "Run 'npm start' to launch server"
+    ],
+    "php": [
+      "Install PHP",
+      "Copy config.sample.php to config.php and set OPENAI_API_KEY",
+      "Run 'php -S 127.0.0.1:8000 -t .' in project folder"
+    ]
+  },
+  "goals": [
+    "Provide a comprehensive dashboard for federal subcontracting opportunities",
+    "Enable interactive exploration of market data, contract vehicles, primes, and cost strategies",
+    "Empower users with an AI assistant for actionable insights and Q&A"
+  ]
+}
