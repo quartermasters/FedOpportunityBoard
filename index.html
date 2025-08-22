@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Michael LLC - Federal Opportunities Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="sidebar w-80 h-full fixed left-0 top-0 z-50 transform transition-transform duration-300 ease-in-out lg:translate-x-0 -translate-x-full">
+            <div class="flex flex-col h-full p-6">
+                <!-- Logo -->
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold text-white mb-2">St Michael LLC</h1>
+                    <p class="text-gray-300 text-sm">Federal Opportunities Dashboard</p>
+                </div>
+                
+                <!-- Navigation Items -->
+                <div class="flex-1">
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#market-overview" class="nav-item active flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+                                <i data-feather="trending-up" class="mr-3 w-5 h-5"></i>
+                                Market Overview
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contract-vehicles" class="nav-item flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+                                <i data-feather="file-text" class="mr-3 w-5 h-5"></i>
+                                Contract Vehicles
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#prime-contractors" class="nav-item flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+                                <i data-feather="users" class="mr-3 w-5 h-5"></i>
+                                Prime Contractors
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#strategic-toolkit" class="nav-item flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+                                <i data-feather="tool" class="mr-3 w-5 h-5"></i>
+                                Strategic Toolkit
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#cost-strategy" class="nav-item flex items-center px-4 py-3 rounded-lg transition-all duration-200">
+                                <i data-feather="dollar-sign" class="mr-3 w-5 h-5"></i>
+                                Cost Strategy
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Footer -->
+                <div class="text-center text-gray-300 text-xs">
+                    <p>&copy; 2024 St Michael LLC</p>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-btn" class="lg:hidden fixed top-4 left-4 z-50 bg-blue-600 text-white p-2 rounded-lg">
+            <i data-feather="menu" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Main Content -->
+        <main class="flex-1 lg:ml-80 overflow-auto">
+            <div class="p-6">
+                <!-- Header -->
+                <header class="mb-8">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 id="page-title" class="text-3xl font-bold text-gray-800">Market Overview</h2>
+                            <p id="page-subtitle" class="text-gray-600 mt-2">Federal subcontracting market analysis and insights</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="text-right">
+                                <p class="text-sm text-gray-500">Last Updated</p>
+                                <p id="last-updated" class="text-sm font-semibold text-gray-700"></p>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Content Sections -->
+                <div id="content-container">
+                    <!-- Market Overview Section -->
+                    <section id="market-overview-section" class="content-section">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Total Market Value</p>
+                                        <p class="text-2xl font-bold text-gray-900">$773.68B</p>
+                                    </div>
+                                    <div class="bg-green-100 p-3 rounded-full">
+                                        <i data-feather="trending-up" class="w-6 h-6 text-green-600"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="flex items-center">
+                                        <span class="text-sm text-green-600 font-medium">FY2024</span>
+                                        <span class="text-sm text-gray-500 ml-2">federal spending</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">Small Business Awards</p>
+                                        <p class="text-2xl font-bold text-gray-900">$176.11B</p>
+                                    </div>
+                                    <div class="bg-blue-100 p-3 rounded-full">
+                                        <i data-feather="file-text" class="w-6 h-6 text-blue-600"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="flex items-center">
+                                        <span class="text-sm text-blue-600 font-medium">+$4B</span>
+                                        <span class="text-sm text-gray-500 ml-2">from FY2023</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">DoD Market Share</p>
+                                        <p class="text-2xl font-bold text-gray-900">$463.6B</p>
+                                    </div>
+                                    <div class="bg-purple-100 p-3 rounded-full">
+                                        <i data-feather="users" class="w-6 h-6 text-purple-600"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="flex items-center">
+                                        <span class="text-sm text-purple-600 font-medium">60%</span>
+                                        <span class="text-sm text-gray-500 ml-2">of total awards</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-500">OASIS+ Value</p>
+                                        <p class="text-2xl font-bold text-gray-900">No Ceiling</p>
+                                    </div>
+                                    <div class="bg-orange-100 p-3 rounded-full">
+                                        <i data-feather="dollar-sign" class="w-6 h-6 text-orange-600"></i>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="flex items-center">
+                                        <span class="text-sm text-orange-600 font-medium">FY2025</span>
+                                        <span class="text-sm text-gray-500 ml-2">on-ramping</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Market Share by Agency</h3>
+                                <canvas id="agencyChart" width="400" height="300"></canvas>
+                            </div>
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Contract Awards Timeline</h3>
+                                <canvas id="timelineChart" width="400" height="300"></canvas>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contract Vehicles Section -->
+                    <section id="contract-vehicles-section" class="content-section hidden">
+                        <div class="bg-white rounded-lg shadow-lg mb-6">
+                            <div class="p-6">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                                    <h3 class="text-lg font-semibold text-gray-800">Contract Vehicles</h3>
+                                    <div class="mt-4 md:mt-0 flex flex-col md:flex-row md:items-center md:space-x-4">
+                                        <input type="text" id="vehicle-search" placeholder="Search contract vehicles..." 
+                                               class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <select id="vehicle-filter" class="mt-2 md:mt-0 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            <option value="">All Types</option>
+                                            <option value="GWAC">GWAC</option>
+                                            <option value="GSA">GSA Schedule</option>
+                                            <option value="OASIS">OASIS</option>
+                                            <option value="CIO-SP3">CIO-SP3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="vehicles-list" class="space-y-4">
+                                    <!-- Contract vehicles will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Prime Contractors Section -->
+                    <section id="prime-contractors-section" class="content-section hidden">
+                        <div class="bg-white rounded-lg shadow-lg mb-6">
+                            <div class="p-6">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                                    <h3 class="text-lg font-semibold text-gray-800">Prime Contractors</h3>
+                                    <div class="mt-4 md:mt-0 flex flex-col md:flex-row md:items-center md:space-x-4">
+                                        <input type="text" id="prime-search" placeholder="Search prime contractors..." 
+                                               class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <select id="prime-filter" class="mt-2 md:mt-0 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            <option value="">All Categories</option>
+                                            <option value="IT Services">IT Services</option>
+                                            <option value="Defense">Defense</option>
+                                            <option value="Healthcare">Healthcare</option>
+                                            <option value="Engineering">Engineering</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div id="primes-list" class="space-y-4">
+                                    <!-- Prime contractors will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Strategic Toolkit Section -->
+                    <section id="strategic-toolkit-section" class="content-section hidden">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Capability Assessment Tools</h3>
+                                <div id="capability-tools" class="space-y-3">
+                                    <!-- Tools will be populated by JavaScript -->
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Market Intelligence</h3>
+                                <div id="intelligence-tools" class="space-y-3">
+                                    <!-- Tools will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Action Plan</h3>
+                            <div id="action-plan" class="space-y-4">
+                                <!-- Action plan steps will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cost Strategy Section -->
+                    <section id="cost-strategy-section" class="content-section hidden">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Cost Breakdown Analysis</h3>
+                                <canvas id="costChart" width="400" height="300"></canvas>
+                            </div>
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Cost Phases</h3>
+                                <div id="cost-phases" class="space-y-4">
+                                    <!-- Cost phases will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow-lg p-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Cost Optimization Recommendations</h3>
+                            <div id="cost-recommendations" class="space-y-3">
+                                <!-- Recommendations will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- AI Chat Widget -->
+    <div id="chat-widget" class="fixed bottom-6 right-6 z-50">
+        <button id="chat-toggle" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-200">
+            <i data-feather="message-circle" class="w-6 h-6"></i>
+        </button>
+        
+        <div id="chat-panel" class="hidden absolute bottom-16 right-0 w-96 h-96 bg-white rounded-lg shadow-xl border">
+            <div class="flex flex-col h-full">
+                <div class="bg-blue-600 text-white p-4 rounded-t-lg flex items-center justify-between">
+                    <h3 class="font-semibold">AI Assistant</h3>
+                    <button id="chat-close" class="text-white hover:text-gray-200">
+                        <i data-feather="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3">
+                    <div class="text-center text-gray-500 text-sm">
+                        <p>Hello! I'm your AI assistant for federal contracting insights.</p>
+                        <p>Ask me about contract vehicles, prime contractors, or cost strategies.</p>
+                    </div>
+                </div>
+                
+                <div class="p-4 border-t">
+                    <div class="flex space-x-2">
+                        <input type="text" id="chat-input" placeholder="Ask about federal contracting..." 
+                               class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <button id="chat-send" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+                            <i data-feather="send" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="charts.js"></script>
+    <script src="chat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
