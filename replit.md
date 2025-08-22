@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a comprehensive web-based dashboard designed for St Michael LLC to analyze federal subcontracting opportunities in the government contracting (GovCon) market. The application provides insights into market trends, contract vehicles, prime contractors, cost strategies, and strategic tools for navigating the federal procurement landscape. The dashboard features an integrated AI assistant to help users understand complex government contracting concepts and opportunities.
+This is a comprehensive web-based dashboard designed for St Michael LLC to analyze federal subcontracting opportunities in the government contracting (GovCon) market. Developed and owned by Aliff Capital 2025. The application provides insights into market trends, contract vehicles, prime contractors, cost strategies, and strategic tools for navigating the federal procurement landscape. The dashboard features an integrated AI assistant to help users understand complex government contracting concepts and opportunities.
 
 ## User Preferences
 
