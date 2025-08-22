@@ -19,7 +19,8 @@ window.dashboardCharts = {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
+                aspectRatio: 1,
                 plugins: {
                     legend: {
                         position: 'bottom',
@@ -56,7 +57,8 @@ window.dashboardCharts = {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
+                aspectRatio: 2,
                 scales: {
                     y: {
                         type: 'linear',
@@ -120,7 +122,8 @@ window.dashboardCharts = {
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
+                maintainAspectRatio: true,
+                aspectRatio: 1.5,
                 scales: {
                     y: {
                         beginAtZero: true,
@@ -173,7 +176,17 @@ window.dashboardCharts = {
     }
 };
 
-// Responsive chart handling
+// Throttled responsive chart handling to prevent infinite loops
+let resizeTimeout;
 window.addEventListener('resize', () => {
-    window.dashboardCharts.updateCharts();
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        if (window.dashboardCharts && window.dashboardCharts.charts) {
+            Object.values(window.dashboardCharts.charts).forEach(chart => {
+                if (chart && typeof chart.resize === 'function') {
+                    chart.resize();
+                }
+            });
+        }
+    }, 250);
 });
