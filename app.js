@@ -207,32 +207,38 @@ class FederalDashboard {
         if (!primesList) return;
 
         primesList.innerHTML = window.primeContractors.map(prime => `
-            <div class="prime-card border rounded-lg p-6 hover:shadow-md transition-shadow cursor-pointer" 
+            <div class="prime-card border rounded-lg p-4 md:p-6 hover:shadow-md transition-shadow cursor-pointer" 
                  data-category="${prime.category}" data-name="${prime.name.toLowerCase()}">
-                <div class="flex justify-between items-start mb-3">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2">
                     <div class="flex-1">
-                        <h4 class="text-lg font-semibold text-gray-800">${prime.name}</h4>
-                        <p class="text-blue-600 font-medium">${prime.category}</p>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-1">${prime.name}</h4>
+                        <p class="text-blue-600 font-medium text-sm">${prime.category}</p>
                     </div>
-                    <button class="expand-btn text-gray-400 hover:text-gray-600" data-target="prime-details-${prime.id}">
+                    <button class="expand-btn text-gray-400 hover:text-gray-600 self-start sm:self-auto" data-target="prime-details-${prime.id}">
                         <i data-feather="chevron-down" class="w-5 h-5"></i>
                     </button>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600 mb-3">
-                    <div><strong>Contract Value:</strong> ${prime.contractValue}</div>
-                    <div><strong>Projects:</strong> ${prime.activeProjects}</div>
-                    <div><strong>Rating:</strong> ${'★'.repeat(prime.rating)}${'☆'.repeat(5-prime.rating)}</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-gray-600 mb-4">
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-gray-700">Contract Value</span>
+                        <span>${prime.contractValue}</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-gray-700">Active Projects</span>
+                        <span>${prime.activeProjects}</span>
+                    </div>
+                    <div class="flex flex-col sm:col-span-2 lg:col-span-1">
+                        <span class="font-semibold text-gray-700">Rating</span>
+                        <span class="text-yellow-500">${'★'.repeat(prime.rating)}${'☆'.repeat(5-prime.rating)}</span>
+                    </div>
                 </div>
                 
-                <div class="mb-3">
+                <div class="mb-4">
                     <a href="${prime.vendorPortalUrl}" target="_blank" rel="noopener noreferrer" 
-                       class="inline-flex items-center px-4 py-2 text-white font-medium text-sm rounded-lg transition-all duration-200" 
-                       style="background-color: #0a3161;" 
-                       onmouseover="this.style.backgroundColor='#b31942'" 
-                       onmouseout="this.style.backgroundColor='#0a3161'">
+                       class="vendor-portal-btn w-full justify-center">
                         <i data-feather="external-link" class="w-4 h-4 mr-2"></i>
-                        Vendor Portal Link
+                        Access Vendor Portal
                     </a>
                 </div>
                 
