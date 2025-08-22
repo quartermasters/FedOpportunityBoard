@@ -11,7 +11,7 @@ Updated with revised startup costs showing $11,000 monthly operating cost (previ
 The business operates through a three-partner structure:
 - **St Michael LLC**: Main contractor responsible for proposal submission and contract performance
 - **Republic Capital Access**: Provides capital for contract performance as loans, receiving percentage of profits for each capital injection
-- **Aliff Capital**: Responsible for all business processes and operational expenses (bears the $11,000 monthly costs)
+- **Aliff Capital**: Responsible for all business processes and operational expenses (bears the $11,000 monthly costs). Team operates across UAE, Pakistan, and India
 
 ## User Preferences
 

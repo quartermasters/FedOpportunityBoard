@@ -460,7 +460,7 @@ window.costStrategy = {
             "Administrative Salaries": {
                 amount: 5000,
                 type: "Labor", 
-                description: "Financial Management, HR, Research, Logistics, Procurement, technical writers, Compliance Executives, Legal Assistants"
+                description: "Financial Management, HR, Research, Logistics, Procurement, technical writers, Compliance Executives, Legal Assistants (UAE, Pakistan, India teams)"
             },
             "Rent & Utilities": {
                 amount: 500,
