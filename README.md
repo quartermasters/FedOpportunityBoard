@@ -339,8 +339,8 @@ git push origin feature/amazing-new-feature
 **Federal Contracting Excellence Since 2024**
 
 📧 **Email:** hello@aliffcapital.com  
-🌐 **Website:** [stmichaelenterprises.com](https://stmichaelenterprises.com)  
-💼 **LinkedIn:** [St Michael LLC](https://linkedin.com/company/stmichael-llc)  
+🌐 **Website:** [aliffcapital.com](https://aliffcapital.com)  
+💼 **LinkedIn:** [Aliff Capital](https://linkedin.com/company/aliffcapital)  
 
 ### 🤝 **Partnership Inquiries**
 Interested in federal contracting partnerships? Let's connect!
@@ -373,7 +373,7 @@ Unauthorized copying, distribution, or use is strictly prohibited.
 
 *Securing Government Contracts Through Innovation*
 
-[![Built with ❤️](https://img.shields.io/badge/Built%20with-❤️-red?style=for-the-badge)](https://stmichaelenterprises.com)
+[![Built with ❤️](https://img.shields.io/badge/Built%20with-❤️-red?style=for-the-badge)](https://aliffcapital.com)
 [![Federal Contracting](https://img.shields.io/badge/Federal-Contracting-blue?style=for-the-badge)](https://sam.gov)
 [![AI Powered](https://img.shields.io/badge/AI-Powered-purple?style=for-the-badge)](https://openai.com)
 
