@@ -256,7 +256,7 @@ class FederalDashboard {
         const actionPlan = document.getElementById('action-plan');
 
         if (capabilityTools) {
-            capabilityTools.innerHTML = window.strategicToolkit.capabilityTools.map(tool => `
+            capabilityTools.innerHTML = window.strategicToolkit.capabilityTools.map((tool, index) => `
                 <div class="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
                     <div class="flex items-center">
                         <i data-feather="${tool.icon}" class="w-5 h-5 text-blue-600 mr-3"></i>
@@ -265,7 +265,7 @@ class FederalDashboard {
                             <p class="text-sm text-gray-600">${tool.description}</p>
                         </div>
                     </div>
-                    <button class="text-blue-600 hover:text-blue-800 font-medium text-sm">
+                    <button class="launch-tool-btn text-blue-600 hover:text-blue-800 font-medium text-sm" data-tool-id="capability-${index}">
                         Launch Tool
                     </button>
                 </div>
@@ -273,7 +273,7 @@ class FederalDashboard {
         }
 
         if (intelligenceTools) {
-            intelligenceTools.innerHTML = window.strategicToolkit.intelligenceTools.map(tool => `
+            intelligenceTools.innerHTML = window.strategicToolkit.intelligenceTools.map((tool, index) => `
                 <div class="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50">
                     <div class="flex items-center">
                         <i data-feather="${tool.icon}" class="w-5 h-5 text-green-600 mr-3"></i>
@@ -282,7 +282,7 @@ class FederalDashboard {
                             <p class="text-sm text-gray-600">${tool.description}</p>
                         </div>
                     </div>
-                    <button class="text-green-600 hover:text-green-800 font-medium text-sm">
+                    <button class="access-tool-btn text-green-600 hover:text-green-800 font-medium text-sm" data-tool-id="intelligence-${index}">
                         Access
                     </button>
                 </div>
@@ -307,7 +307,384 @@ class FederalDashboard {
             `).join('');
         }
 
+        // Add event listeners for tool buttons
+        this.setupToolkitEventListeners();
         feather.replace();
+    }
+
+    setupToolkitEventListeners() {
+        // Capability tool buttons
+        document.querySelectorAll('.launch-tool-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const toolId = btn.getAttribute('data-tool-id');
+                this.launchCapabilityTool(toolId);
+            });
+        });
+
+        // Intelligence tool buttons
+        document.querySelectorAll('.access-tool-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const toolId = btn.getAttribute('data-tool-id');
+                this.accessIntelligenceTool(toolId);
+            });
+        });
+    }
+
+    launchCapabilityTool(toolId) {
+        const toolIndex = parseInt(toolId.split('-')[1]);
+        const tool = window.strategicToolkit.capabilityTools[toolIndex];
+        
+        if (!tool) return;
+
+        // Create modal for the tool
+        this.showToolModal(tool.name, this.getCapabilityToolContent(tool));
+    }
+
+    accessIntelligenceTool(toolId) {
+        const toolIndex = parseInt(toolId.split('-')[1]);
+        const tool = window.strategicToolkit.intelligenceTools[toolIndex];
+        
+        if (!tool) return;
+
+        // Create modal for the tool
+        this.showToolModal(tool.name, this.getIntelligenceToolContent(tool));
+    }
+
+    getCapabilityToolContent(tool) {
+        const toolContents = {
+            'DLA TLS Prime Vendor Analysis': `
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-2">DLA TLS Prime Vendors</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="bg-white p-3 rounded border">
+                                <strong>ADS Inc.</strong><br>
+                                <span class="text-sm text-gray-600">Focus: SOE contracts ($33B ceiling)</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>Federal Resources</strong><br>
+                                <span class="text-sm text-gray-600">Focus: F&ESE contracts ($7B ceiling)</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>Noble Supply & Logistics</strong><br>
+                                <span class="text-sm text-gray-600">Focus: MRO services ($1.9B ceiling)</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>SupplyCore</strong><br>
+                                <span class="text-sm text-gray-600">Focus: Multi-category support</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-yellow-800 mb-2">Subcontracting Strategy</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Target small business set-asides within DLA TLS contracts</li>
+                            <li>Focus on specialized capabilities these primes need</li>
+                            <li>Build relationships through vendor days and industry events</li>
+                            <li>Prepare for SOE requirements in government facilities</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            'Contract Vehicle Alignment Tool': `
+                <div class="space-y-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-800 mb-2">Contract Vehicle Matching</h4>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded border">
+                                <strong>OASIS+</strong> - Professional Services<br>
+                                <span class="text-sm text-gray-600">Continuous on-ramping starting FY2025</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>SEWP V</strong> - IT Products & Services<br>
+                                <span class="text-sm text-gray-600">Best for hardware/software solutions</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>STARS III</strong> - IT Services<br>
+                                <span class="text-sm text-gray-600">Focus on enterprise IT solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-2">Capability Assessment</h4>
+                        <p class="text-sm">Review your core capabilities against vehicle requirements to identify the best fit for your business.</p>
+                    </div>
+                </div>
+            `,
+            'CMMC Compliance Readiness': `
+                <div class="space-y-4">
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-red-800 mb-2">CMMC Requirements</h4>
+                        <div class="space-y-2">
+                            <div><strong>Level 1:</strong> Basic cyber hygiene (17 practices)</div>
+                            <div><strong>Level 2:</strong> Advanced cybersecurity (110 practices)</div>
+                            <div><strong>Level 3:</strong> Expert cybersecurity (58 additional practices)</div>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-800 mb-2">Preparation Steps</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Conduct initial cybersecurity assessment</li>
+                            <li>Implement required security controls</li>
+                            <li>Document policies and procedures</li>
+                            <li>Schedule third-party assessment</li>
+                            <li>Maintain ongoing compliance program</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            'Small Business Set-Aside Maximizer': `
+                <div class="space-y-4">
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-purple-800 mb-2">Set-Aside Categories</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="bg-white p-3 rounded border">
+                                <strong>8(a) Program</strong><br>
+                                <span class="text-sm text-gray-600">Socially & economically disadvantaged</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>SDVOSB</strong><br>
+                                <span class="text-sm text-gray-600">Service-disabled veteran owned</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>WOSB</strong><br>
+                                <span class="text-sm text-gray-600">Women-owned small business</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>HUBZone</strong><br>
+                                <span class="text-sm text-gray-600">Historically underutilized zones</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-800 mb-2">Opportunity Strategy</h4>
+                        <p class="text-sm">Target contracts specifically set aside for your certifications to maximize win probability and reduce competition.</p>
+                    </div>
+                </div>
+            `,
+            'Past Performance Portfolio': `
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-2">CPARS Preparation</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Document all contract deliverables and milestones</li>
+                            <li>Maintain records of customer satisfaction</li>
+                            <li>Track cost and schedule performance</li>
+                            <li>Prepare narrative descriptions of achievements</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-800 mb-2">Best Practices</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Focus on quantifiable results and metrics</li>
+                            <li>Highlight problem-solving and innovation</li>
+                            <li>Include customer testimonials where possible</li>
+                            <li>Show continuous improvement over time</li>
+                        </ul>
+                    </div>
+                </div>
+            `
+        };
+
+        return toolContents[tool.name] || `
+            <div class="text-center py-8">
+                <h4 class="text-lg font-semibold text-gray-800 mb-2">${tool.name}</h4>
+                <p class="text-gray-600">${tool.description}</p>
+                <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <p class="text-sm text-blue-800">This tool is currently being developed. Check back soon for full functionality.</p>
+                </div>
+            </div>
+        `;
+    }
+
+    getIntelligenceToolContent(tool) {
+        const toolContents = {
+            'OASIS+ On-Ramp Tracker': `
+                <div class="space-y-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-800 mb-2">OASIS+ Continuous On-Ramping</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="bg-white p-3 rounded border">
+                                <strong>Start Date:</strong> FY2025<br>
+                                <span class="text-sm text-gray-600">Annual on-ramping opportunities</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>Domains:</strong> Multiple<br>
+                                <span class="text-sm text-gray-600">Professional services focus</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-2">Preparation Strategy</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Monitor GSA announcements for application periods</li>
+                            <li>Prepare capability statements and past performance</li>
+                            <li>Build relationships with current OASIS+ contractors</li>
+                            <li>Focus on specific domain expertise</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            'Prime Contractor Subcontracting Plans': `
+                <div class="space-y-4">
+                    <div class="bg-purple-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-purple-800 mb-2">Major Prime Contractors</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-3 rounded border">
+                                <strong>Lockheed Martin:</strong> $62.8B in federal contracts<br>
+                                <span class="text-sm text-gray-600">Strong subcontracting program for small businesses</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>Raytheon Technologies:</strong> $29.1B in federal contracts<br>
+                                <span class="text-sm text-gray-600">Focus on technology and engineering services</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-800 mb-2">Subcontracting Opportunities</h4>
+                        <p class="text-sm">Review prime contractor subcontracting plans to identify specific opportunities aligned with your capabilities.</p>
+                    </div>
+                </div>
+            `,
+            'Federal Spending Intelligence': `
+                <div class="space-y-4">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-2">FY2024 Federal Spending</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="bg-white p-3 rounded border text-center">
+                                <strong class="text-2xl text-blue-600">$773.68B</strong><br>
+                                <span class="text-sm text-gray-600">Total Federal Spending</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border text-center">
+                                <strong class="text-2xl text-green-600">$176.11B</strong><br>
+                                <span class="text-sm text-gray-600">Small Business Awards</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-yellow-800 mb-2">Market Trends</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>DoD accounts for 60% of total federal spending</li>
+                            <li>Small business awards increased by $4B from FY2023</li>
+                            <li>Technology services show strongest growth</li>
+                        </ul>
+                    </div>
+                </div>
+            `,
+            'Best-in-Class Vehicle Monitor': `
+                <div class="space-y-4">
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-800 mb-2">OMB Best-in-Class Vehicles</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-3 rounded border">
+                                <strong>STARS III:</strong> IT Services<br>
+                                <span class="text-sm text-gray-600">$20B ceiling, enterprise solutions</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>SEWP V:</strong> IT Products<br>
+                                <span class="text-sm text-gray-600">$20B ceiling, hardware/software</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>Alliant 2:</strong> Professional Services<br>
+                                <span class="text-sm text-gray-600">$65B ceiling, consulting</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-blue-800 mb-2">BIC Advantages</h4>
+                        <p class="text-sm">Best-in-Class vehicles offer streamlined procurement, reduced duplication, and preferred use by agencies.</p>
+                    </div>
+                </div>
+            `,
+            'TLS Competition Analysis': `
+                <div class="space-y-4">
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-red-800 mb-2">DLA TLS Competitive Landscape</h4>
+                        <div class="space-y-2">
+                            <div class="bg-white p-3 rounded border">
+                                <strong>SOE (Support Operations Equipment):</strong><br>
+                                <span class="text-sm text-gray-600">$33B ceiling - Highest competition</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>F&ESE (Facilities & Environmental):</strong><br>
+                                <span class="text-sm text-gray-600">$7B ceiling - Moderate competition</span>
+                            </div>
+                            <div class="bg-white p-3 rounded border">
+                                <strong>MRO (Maintenance, Repair, Operations):</strong><br>
+                                <span class="text-sm text-gray-600">$1.9B ceiling - Specialized opportunities</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-green-800 mb-2">Strategy Recommendations</h4>
+                        <ul class="list-disc list-inside text-sm space-y-1">
+                            <li>Focus on niche specializations within TLS categories</li>
+                            <li>Build relationships with current prime vendors</li>
+                            <li>Target small business set-asides within TLS contracts</li>
+                        </ul>
+                    </div>
+                </div>
+            `
+        };
+
+        return toolContents[tool.name] || `
+            <div class="text-center py-8">
+                <h4 class="text-lg font-semibold text-gray-800 mb-2">${tool.name}</h4>
+                <p class="text-gray-600">${tool.description}</p>
+                <div class="mt-4 p-4 bg-green-50 rounded-lg">
+                    <p class="text-sm text-green-800">This intelligence tool is currently being developed. Check back soon for full functionality.</p>
+                </div>
+            </div>
+        `;
+    }
+
+    showToolModal(title, content) {
+        // Create modal overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+        
+        // Create modal content
+        const modal = document.createElement('div');
+        modal.className = 'bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden';
+        
+        modal.innerHTML = `
+            <div class="flex items-center justify-between p-6 border-b" style="background-color: #0a3161;">
+                <h3 class="text-xl font-semibold text-white">${title}</h3>
+                <button class="close-modal text-white hover:text-gray-200" style="color: white;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto max-h-[70vh]">
+                ${content}
+            </div>
+            <div class="border-t p-4 flex justify-end">
+                <button class="close-modal px-4 py-2 text-white rounded-lg" style="background-color: #0a3161;">
+                    Close
+                </button>
+            </div>
+        `;
+        
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+        
+        // Add close functionality
+        overlay.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.body.removeChild(overlay);
+            });
+        });
+        
+        // Close on overlay click
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                document.body.removeChild(overlay);
+            }
+        });
     }
 
     populateCostStrategy() {
