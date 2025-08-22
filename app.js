@@ -123,6 +123,10 @@ class FederalDashboard {
             'about-us': {
                 title: 'About Us',
                 subtitle: 'Partnership structure and organizational overview'
+            },
+            'value-contributions': {
+                title: 'Value Contributions',
+                subtitle: 'AI-powered partnership value analysis and calculator'
             }
         };
 
@@ -139,6 +143,8 @@ class FederalDashboard {
             setTimeout(() => this.initializeCharts(), 100);
         } else if (sectionId === 'about-us') {
             setTimeout(() => this.initializeAboutUs(), 100);
+        } else if (sectionId === 'value-contributions') {
+            setTimeout(() => this.initializeValueContributions(), 100);
         }
 
         // Close mobile sidebar after navigation
@@ -190,29 +196,189 @@ class FederalDashboard {
                 });
             });
         });
-
-        // Initialize value contribution charts
-        this.initValueContributionCharts();
     }
 
-    initValueContributionCharts() {
+    initializeValueContributions() {
+        // Initialize value calculator
+        this.setupValueCalculator();
+        // Initialize charts with proper timing
+        setTimeout(() => {
+            this.initValueCharts();
+        }, 200);
+    }
+
+    setupValueCalculator() {
+        // Setup slider displays
+        const complexitySlider = document.getElementById('technical-complexity');
+        const complexityDisplay = document.getElementById('complexity-display');
+        const stmichaelSlider = document.getElementById('stmichael-weight');
+        const stmichaelDisplay = document.getElementById('stmichael-display');
+        const republicSlider = document.getElementById('republic-weight');
+        const republicDisplay = document.getElementById('republic-display');
+        const aliffSlider = document.getElementById('aliff-weight');
+        const aliffDisplay = document.getElementById('aliff-display');
+
+        if (complexitySlider && complexityDisplay) {
+            complexitySlider.addEventListener('input', (e) => {
+                complexityDisplay.textContent = e.target.value;
+            });
+        }
+
+        if (stmichaelSlider && stmichaelDisplay) {
+            stmichaelSlider.addEventListener('input', (e) => {
+                stmichaelDisplay.textContent = e.target.value + '%';
+                this.normalizeWeights('stmichael', parseInt(e.target.value));
+            });
+        }
+
+        if (republicSlider && republicDisplay) {
+            republicSlider.addEventListener('input', (e) => {
+                republicDisplay.textContent = e.target.value + '%';
+                this.normalizeWeights('republic', parseInt(e.target.value));
+            });
+        }
+
+        if (aliffSlider && aliffDisplay) {
+            aliffSlider.addEventListener('input', (e) => {
+                aliffDisplay.textContent = e.target.value + '%';
+                this.normalizeWeights('aliff', parseInt(e.target.value));
+            });
+        }
+
+        // Setup calculate button
+        const calculateBtn = document.getElementById('calculate-value');
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', () => this.calculatePartnershipValue());
+        }
+
+        // Setup AI optimize button
+        const aiOptimizeBtn = document.getElementById('ai-optimize');
+        if (aiOptimizeBtn) {
+            aiOptimizeBtn.addEventListener('click', () => this.aiOptimizeWeights());
+        }
+    }
+
+    normalizeWeights(changedPartner, newValue) {
+        const total = 100;
+        const remaining = total - newValue;
+        
+        const stmichaelSlider = document.getElementById('stmichael-weight');
+        const republicSlider = document.getElementById('republic-weight');
+        const aliffSlider = document.getElementById('aliff-weight');
+        
+        if (changedPartner !== 'stmichael') {
+            const currentRepublic = parseInt(republicSlider.value);
+            const currentAliff = parseInt(aliffSlider.value);
+            const otherTotal = currentRepublic + currentAliff;
+            
+            if (otherTotal > 0) {
+                const republicRatio = currentRepublic / otherTotal;
+                const aliffRatio = currentAliff / otherTotal;
+                
+                republicSlider.value = Math.round(remaining * republicRatio);
+                aliffSlider.value = Math.round(remaining * aliffRatio);
+                
+                document.getElementById('republic-display').textContent = republicSlider.value + '%';
+                document.getElementById('aliff-display').textContent = aliffSlider.value + '%';
+            }
+        }
+        // Similar logic for other partners...
+    }
+
+    calculatePartnershipValue() {
+        const contractValue = parseFloat(document.getElementById('contract-value').value) || 0;
+        const duration = parseFloat(document.getElementById('contract-duration').value) || 1;
+        const complexity = parseFloat(document.getElementById('technical-complexity').value) || 1;
+        const stmichaelWeight = parseFloat(document.getElementById('stmichael-weight').value) || 0;
+        const republicWeight = parseFloat(document.getElementById('republic-weight').value) || 0;
+        const aliffWeight = parseFloat(document.getElementById('aliff-weight').value) || 0;
+
+        // Calculate value contributions
+        const stmichaelValue = (contractValue * stmichaelWeight / 100);
+        const republicValue = (contractValue * republicWeight / 100);
+        const aliffValue = (contractValue * aliffWeight / 100);
+
+        // Calculate complexity multipliers
+        const complexityMultiplier = 1 + (complexity - 1) * 0.1;
+        
+        // Display results
+        const resultsDiv = document.getElementById('calculation-results');
+        const resultsGrid = document.getElementById('results-grid');
+        
+        if (resultsDiv && resultsGrid) {
+            resultsDiv.classList.remove('hidden');
+            resultsGrid.innerHTML = `
+                <div class="text-center p-4 bg-blue-50 rounded-lg border-l-4" style="border-color: #0a3161;">
+                    <div class="text-2xl font-bold text-gray-800">$${stmichaelValue.toLocaleString()}</div>
+                    <div class="text-sm text-gray-600 mt-1">St Michael Value</div>
+                    <div class="text-xs text-gray-500">${stmichaelWeight}% allocation</div>
+                </div>
+                <div class="text-center p-4 bg-red-50 rounded-lg border-l-4" style="border-color: #b31942;">
+                    <div class="text-2xl font-bold text-gray-800">$${republicValue.toLocaleString()}</div>
+                    <div class="text-sm text-gray-600 mt-1">Republic Capital Value</div>
+                    <div class="text-xs text-gray-500">${republicWeight}% allocation</div>
+                </div>
+                <div class="text-center p-4 bg-green-50 rounded-lg border-l-4" style="border-color: #10B981;">
+                    <div class="text-2xl font-bold text-gray-800">$${aliffValue.toLocaleString()}</div>
+                    <div class="text-sm text-gray-600 mt-1">Aliff Capital Value</div>
+                    <div class="text-xs text-gray-500">${aliffWeight}% allocation</div>
+                </div>
+            `;
+        }
+
+        // Update charts with new data
+        this.updateValueCharts([stmichaelWeight, republicWeight, aliffWeight]);
+    }
+
+    aiOptimizeWeights() {
+        const contractValue = parseFloat(document.getElementById('contract-value').value) || 0;
+        const complexity = parseFloat(document.getElementById('technical-complexity').value) || 1;
+        const agencyType = document.getElementById('agency-type').value;
+
+        // AI optimization logic based on contract parameters
+        let optimizedWeights = { stmichael: 45, republic: 30, aliff: 25 };
+
+        if (agencyType === 'dod' && complexity >= 8) {
+            optimizedWeights = { stmichael: 50, republic: 25, aliff: 25 };
+        } else if (contractValue > 5000000) {
+            optimizedWeights = { stmichael: 40, republic: 40, aliff: 20 };
+        } else if (complexity <= 4) {
+            optimizedWeights = { stmichael: 35, republic: 35, aliff: 30 };
+        }
+
+        // Update sliders
+        document.getElementById('stmichael-weight').value = optimizedWeights.stmichael;
+        document.getElementById('republic-weight').value = optimizedWeights.republic;
+        document.getElementById('aliff-weight').value = optimizedWeights.aliff;
+        
+        // Update displays
+        document.getElementById('stmichael-display').textContent = optimizedWeights.stmichael + '%';
+        document.getElementById('republic-display').textContent = optimizedWeights.republic + '%';
+        document.getElementById('aliff-display').textContent = optimizedWeights.aliff + '%';
+
+        // Auto-calculate with optimized weights
+        this.calculatePartnershipValue();
+    }
+
+    initValueCharts() {
         // Ensure Chart.js is loaded
         if (typeof Chart === 'undefined') {
             console.error('Chart.js not loaded');
+            setTimeout(() => this.initValueCharts(), 500);
             return;
         }
 
         // Partner Value Distribution Chart
-        const partnerValueCtx = document.getElementById('partnerValueChart');
-        if (partnerValueCtx) {
-            new Chart(partnerValueCtx, {
+        const valuePartnerCtx = document.getElementById('valuePartnerChart');
+        if (valuePartnerCtx) {
+            new Chart(valuePartnerCtx, {
                 type: 'doughnut',
                 data: {
                     labels: ['St Michael Enterprises', 'Republic Capital Access', 'Aliff Capital'],
                     datasets: [{
                         data: [45, 30, 25],
                         backgroundColor: ['#0a3161', '#b31942', '#10B981'],
-                        borderWidth: 2,
+                        borderWidth: 3,
                         borderColor: '#ffffff'
                     }]
                 },
@@ -241,9 +407,9 @@ class FederalDashboard {
         }
 
         // Capability Coverage Chart
-        const capabilityCtx = document.getElementById('capabilityChart');
-        if (capabilityCtx) {
-            new Chart(capabilityCtx, {
+        const valueCapabilityCtx = document.getElementById('valueCapabilityChart');
+        if (valueCapabilityCtx) {
+            new Chart(valueCapabilityCtx, {
                 type: 'radar',
                 data: {
                     labels: ['Technical Execution', 'Financial Resources', 'Strategy & Planning', 'Market Access', 'Compliance', 'Innovation'],
@@ -303,6 +469,16 @@ class FederalDashboard {
                     }
                 }
             });
+        }
+    }
+
+    updateValueCharts(weights) {
+        // Update the doughnut chart with new weights
+        const valuePartnerCtx = document.getElementById('valuePartnerChart');
+        if (valuePartnerCtx && Chart.getChart(valuePartnerCtx)) {
+            const chart = Chart.getChart(valuePartnerCtx);
+            chart.data.datasets[0].data = weights;
+            chart.update();
         }
     }
 
