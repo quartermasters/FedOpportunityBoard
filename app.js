@@ -190,6 +190,114 @@ class FederalDashboard {
                 });
             });
         });
+
+        // Initialize value contribution charts
+        this.initValueContributionCharts();
+    }
+
+    initValueContributionCharts() {
+        // Partner Value Distribution Chart
+        const partnerValueCtx = document.getElementById('partnerValueChart');
+        if (partnerValueCtx) {
+            new Chart(partnerValueCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['St Michael Enterprises', 'Republic Capital Access', 'Aliff Capital'],
+                    datasets: [{
+                        data: [45, 30, 25],
+                        backgroundColor: ['#0a3161', '#b31942', '#10B981'],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true,
+                                font: { size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.parsed + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Capability Coverage Chart
+        const capabilityCtx = document.getElementById('capabilityChart');
+        if (capabilityCtx) {
+            new Chart(capabilityCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Technical Execution', 'Financial Resources', 'Strategy & Planning', 'Market Access', 'Compliance', 'Innovation'],
+                    datasets: [
+                        {
+                            label: 'St Michael Enterprises',
+                            data: [95, 40, 60, 85, 90, 70],
+                            backgroundColor: 'rgba(10, 49, 97, 0.2)',
+                            borderColor: '#0a3161',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#0a3161'
+                        },
+                        {
+                            label: 'Republic Capital Access',
+                            data: [30, 95, 70, 80, 85, 60],
+                            backgroundColor: 'rgba(179, 25, 66, 0.2)',
+                            borderColor: '#b31942',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#b31942'
+                        },
+                        {
+                            label: 'Aliff Capital',
+                            data: [60, 50, 90, 75, 65, 85],
+                            backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                            borderColor: '#10B981',
+                            borderWidth: 2,
+                            pointBackgroundColor: '#10B981'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true,
+                                font: { size: 11 }
+                            }
+                        }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 100,
+                            ticks: {
+                                stepSize: 20,
+                                font: { size: 10 }
+                            },
+                            pointLabels: {
+                                font: { size: 10 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
     }
 
     populateContractVehicles() {
