@@ -370,8 +370,7 @@ class FederalDashboard {
                 </div>
             `).join('');
 
-            // Set default responsibilities based on known capabilities
-            this.setDefaultResponsibilities();
+            // Users will manually assign responsibilities for their specific analysis
         }
 
         // Setup complexity slider display
