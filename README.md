@@ -335,8 +335,7 @@ git push origin feature/amazing-new-feature
 
 <div align="center">
 
-### 🏢 **St Michael LLC**
-**Federal Contracting Excellence Since 2024**
+### 🏢 **Aliff Capital**
 
 📧 **Email:** hello@aliffcapital.com  
 🌐 **Website:** [aliffcapital.com](https://aliffcapital.com)  
