@@ -1184,8 +1184,18 @@ Provide 3-4 market-based rules that justify this distribution.`;
         // Add event listeners for tool buttons
         // Ensure DOM is updated before attaching event listeners
         setTimeout(() => {
+            console.log('Setting up toolkit event listeners...');
             this.setupToolkitEventListeners();
             feather.replace();
+            
+            // Test if buttons are clickable by adding a direct test
+            const testButton = document.querySelector('.ai-research-btn');
+            if (testButton) {
+                console.log('Test button found, adding direct click test');
+                testButton.onclick = function() {
+                    console.log('Direct onclick test triggered!');
+                };
+            }
         }, 100);
     }
 
@@ -1193,20 +1203,36 @@ Provide 3-4 market-based rules that justify this distribution.`;
         // AI research buttons for action plans
         const aiButtons = document.querySelectorAll('.ai-research-btn');
         console.log('Found AI research buttons:', aiButtons.length);
-        aiButtons.forEach(btn => {
+        aiButtons.forEach((btn, index) => {
+            console.log(`Setting up AI button ${index}:`, btn);
+            console.log('Button attributes:', {
+                title: btn.getAttribute('data-action-title'),
+                description: btn.getAttribute('data-action-description'),
+                timeline: btn.getAttribute('data-action-timeline'),
+                priority: btn.getAttribute('data-action-priority')
+            });
             btn.addEventListener('click', (e) => {
+                console.log('AI Research button clicked!', e.target);
                 e.preventDefault();
+                e.stopPropagation();
+                
                 const title = btn.getAttribute('data-action-title');
                 const description = btn.getAttribute('data-action-description');
                 const timeline = btn.getAttribute('data-action-timeline');
                 const priority = btn.getAttribute('data-action-priority');
                 
-                this.conductAIResearch({
-                    title: title,
-                    description: description,
-                    timeline: timeline,
-                    priority: priority
-                });
+                console.log('Action data:', { title, description, timeline, priority });
+                
+                try {
+                    this.conductAIResearch({
+                        title: title,
+                        description: description,
+                        timeline: timeline,
+                        priority: priority
+                    });
+                } catch (error) {
+                    console.error('Error in conductAIResearch:', error);
+                }
             });
         });
 
@@ -1230,7 +1256,9 @@ Provide 3-4 market-based rules that justify this distribution.`;
     }
 
     async conductAIResearch(actionData) {
+        console.log('conductAIResearch called with:', actionData);
         const modal = this.createModal('AI Strategic Research & Analysis', '', 'ai-research-modal');
+        console.log('Modal created:', modal);
         
         // Show loading state
         const content = modal.querySelector('.modal-content');
