@@ -1,0 +1,85 @@
+<div id="action-plan" class="space-y-4">
+                <div class="flex items-start p-4 border rounded-lg">
+                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">
+                        1
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 mb-1">DLA TLS Prime Vendor Engagement</h4>
+                        <p class="text-gray-600 text-sm mb-2">Establish relationships with SOE, F&amp;ESE, and MRO prime vendors. Focus on tactical equipment, emergency services, and facility maintenance opportunities.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="font-medium">Timeline:</span> 2-4 weeks | 
+                            <span class="font-medium">Priority:</span> High
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="flex items-start p-4 border rounded-lg">
+                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">
+                        2
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 mb-1">OASIS+ FY2025 On-Ramp Preparation</h4>
+                        <p class="text-gray-600 text-sm mb-2">Prepare for continuous on-ramping process across eight OASIS+ domains. Develop domain-specific capability statements and past performance narratives.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="font-medium">Timeline:</span> 3-6 weeks | 
+                            <span class="font-medium">Priority:</span> High
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="flex items-start p-4 border rounded-lg">
+                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">
+                        3
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 mb-1">Cybersecurity Maturity Enhancement</h4>
+                        <p class="text-gray-600 text-sm mb-2">Implement CMMC requirements and cybersecurity best practices to meet increasing federal compliance demands.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="font-medium">Timeline:</span> 6-12 weeks | 
+                            <span class="font-medium">Priority:</span> High
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="flex items-start p-4 border rounded-lg">
+                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">
+                        4
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 mb-1">Small Business Certification Optimization</h4>
+                        <p class="text-gray-600 text-sm mb-2">Pursue optimal small business certifications (8(a), SDVOSB, WOSB, HUBZone) to access set-aside opportunities worth $176.11B annually.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="font-medium">Timeline:</span> 4-8 weeks | 
+                            <span class="font-medium">Priority:</span> Medium
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="flex items-start p-4 border rounded-lg">
+                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">
+                        5
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 mb-1">IT Modernization Capability Development</h4>
+                        <p class="text-gray-600 text-sm mb-2">Build capabilities in AI, cloud services, and cybersecurity to capitalize on the $100B annual federal IT spending.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="font-medium">Timeline:</span> 8-16 weeks | 
+                            <span class="font-medium">Priority:</span> Medium
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="flex items-start p-4 border rounded-lg">
+                    <div class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mr-4">
+                        6
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-semibold text-gray-800 mb-1">GSA eBuy and Quote Tool Mastery</h4>
+                        <p class="text-gray-600 text-sm mb-2">Master OASIS+ mandatory GSA eBuy platform and NASA SEWP Quote Request Tool for competitive positioning.</p>
+                        <div class="text-xs text-gray-500">
+                            <span class="font-medium">Timeline:</span> 2-3 weeks | 
+                            <span class="font-medium">Priority:</span> Low
+                        </div>
+                    </div>
+                </div>
+            </div>

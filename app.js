@@ -1166,6 +1166,16 @@ Provide 3-4 market-based rules that justify this distribution.`;
                             <span class="font-medium">Priority:</span> ${step.priority}
                         </div>
                     </div>
+                    <div class="flex-shrink-0 ml-3">
+                        <button class="ai-research-btn bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white p-2 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md group" 
+                                data-action-title="${step.title}" 
+                                data-action-description="${step.description}"
+                                data-action-timeline="${step.timeline}"
+                                data-action-priority="${step.priority}"
+                                title="AI Deep Research & Strategy Analysis">
+                            <i data-feather="brain" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+                        </button>
+                    </div>
                 </div>
             `).join('');
         }
@@ -1176,6 +1186,24 @@ Provide 3-4 market-based rules that justify this distribution.`;
     }
 
     setupToolkitEventListeners() {
+        // AI research buttons for action plans
+        document.querySelectorAll('.ai-research-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const title = btn.getAttribute('data-action-title');
+                const description = btn.getAttribute('data-action-description');
+                const timeline = btn.getAttribute('data-action-timeline');
+                const priority = btn.getAttribute('data-action-priority');
+                
+                this.conductAIResearch({
+                    title: title,
+                    description: description,
+                    timeline: timeline,
+                    priority: priority
+                });
+            });
+        });
+
         // Capability tool buttons
         document.querySelectorAll('.launch-tool-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
@@ -1193,6 +1221,234 @@ Provide 3-4 market-based rules that justify this distribution.`;
                 this.accessIntelligenceTool(toolId);
             });
         });
+    }
+
+    async conductAIResearch(actionData) {
+        const modal = this.createModal('AI Strategic Research & Analysis', '', 'ai-research-modal');
+        
+        // Show loading state
+        const content = modal.querySelector('.modal-content');
+        content.innerHTML = `
+            <div class="text-center py-12">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mb-4">
+                    <i data-feather="cpu" class="w-8 h-8 text-white animate-pulse"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">AI Research Engine Analyzing</h3>
+                <p class="text-gray-600 mb-4">"${actionData.title}"</p>
+                <div class="space-y-2 text-sm text-gray-500">
+                    <div class="flex items-center justify-center">
+                        <i data-feather="search" class="w-4 h-4 mr-2"></i>
+                        <span>Conducting deep market research...</span>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <i data-feather="trending-up" class="w-4 h-4 mr-2"></i>
+                        <span>Analyzing cost structures and projections...</span>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <i data-feather="users" class="w-4 h-4 mr-2"></i>
+                        <span>Generating role assignments and strategy...</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        feather.replace();
+        
+        try {
+            const response = await fetch('/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: `Conduct a comprehensive strategic analysis for this federal contracting action item:
+
+TITLE: ${actionData.title}
+DESCRIPTION: ${actionData.description}
+TIMELINE: ${actionData.timeline}
+PRIORITY: ${actionData.priority}
+
+Please provide a detailed analysis including:
+
+1. **MARKET RESEARCH & OPPORTUNITY ANALYSIS**
+   - Market size and potential revenue
+   - Key competitors and positioning strategy
+   - Regulatory environment and compliance requirements
+   - Success probability assessment
+
+2. **COMPREHENSIVE STRATEGY PAPER**
+   - Strategic approach and methodology
+   - Risk assessment and mitigation strategies
+   - Key performance indicators and metrics
+   - Critical success factors
+
+3. **DETAILED COST PROJECTIONS**
+   - Initial investment requirements
+   - Operating costs breakdown
+   - Resource allocation recommendations
+   - ROI projections and break-even analysis
+
+4. **3-6 MONTH ACTION PLAN WITH ROLE ASSIGNMENTS**
+   - Month-by-month milestones and deliverables
+   - Specific role assignments for St Michael Enterprises, Republic Capital Access, and Aliff Capital
+   - Resource requirements and budget allocation
+   - Risk monitoring and contingency plans
+
+5. **IMPLEMENTATION ROADMAP**
+   - Immediate next steps (Week 1-2)
+   - Phase 1 execution (Month 1-2)
+   - Phase 2 scaling (Month 3-4)
+   - Phase 3 optimization (Month 5-6)
+
+Format the response with clear headings, bullet points, and actionable recommendations. Focus on federal contracting specifics and our partnership structure.`
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            
+            // Display comprehensive analysis
+            content.innerHTML = `
+                <div class="space-y-6">
+                    <div class="border-b pb-4">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Strategic Analysis: ${actionData.title}</h3>
+                        <div class="flex items-center space-x-4 text-sm text-gray-600">
+                            <span><i data-feather="clock" class="w-4 h-4 inline mr-1"></i>Timeline: ${actionData.timeline}</span>
+                            <span><i data-feather="flag" class="w-4 h-4 inline mr-1"></i>Priority: ${actionData.priority}</span>
+                            <span><i data-feather="calendar" class="w-4 h-4 inline mr-1"></i>Generated: ${new Date().toLocaleDateString()}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-lg">
+                        <div class="prose max-w-none">
+                            ${this.convertToRichText(data.response)}
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between">
+                        <button class="download-report-btn bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i data-feather="download" class="w-4 h-4 inline mr-2"></i>
+                            Download Report
+                        </button>
+                        <button class="export-action-plan-btn bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i data-feather="calendar" class="w-4 h-4 inline mr-2"></i>
+                            Export Action Plan
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            feather.replace();
+            
+            // Add download functionality
+            modal.querySelector('.download-report-btn')?.addEventListener('click', () => {
+                this.downloadAnalysisReport(actionData, data.response);
+            });
+            
+            modal.querySelector('.export-action-plan-btn')?.addEventListener('click', () => {
+                this.exportActionPlan(actionData, data.response);
+            });
+            
+        } catch (error) {
+            console.error('AI Research error:', error);
+            content.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="inline-flex items-center justify-center w-12 h-12 bg-red-100 rounded-full mb-4">
+                        <i data-feather="alert-circle" class="w-6 h-6 text-red-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Analysis Error</h3>
+                    <p class="text-gray-600">Unable to complete AI research analysis. Please ensure you have an active OpenAI API key configured.</p>
+                    <button class="retry-btn mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i data-feather="refresh-cw" class="w-4 h-4 inline mr-2"></i>
+                        Retry Analysis
+                    </button>
+                </div>
+            `;
+            feather.replace();
+            
+            modal.querySelector('.retry-btn')?.addEventListener('click', () => {
+                modal.remove();
+                this.conductAIResearch(actionData);
+            });
+        }
+    }
+
+    downloadAnalysisReport(actionData, analysis) {
+        const reportContent = `
+STRATEGIC ANALYSIS REPORT
+========================
+
+Action Item: ${actionData.title}
+Generated: ${new Date().toLocaleDateString()}
+Priority: ${actionData.priority}
+Timeline: ${actionData.timeline}
+
+OVERVIEW
+--------
+${actionData.description}
+
+DETAILED ANALYSIS
+----------------
+${analysis}
+
+--
+Generated by St Michael LLC Federal Opportunities Dashboard
+Powered by AI Strategic Research Engine
+        `;
+        
+        const blob = new Blob([reportContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Strategic_Analysis_${actionData.title.replace(/[^a-zA-Z0-9]/g, '_')}_${new Date().toISOString().split('T')[0]}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    exportActionPlan(actionData, analysis) {
+        const planContent = `
+ACTION PLAN EXPORT
+==================
+
+Project: ${actionData.title}
+Export Date: ${new Date().toLocaleDateString()}
+Priority Level: ${actionData.priority}
+Timeline: ${actionData.timeline}
+
+STRATEGIC FRAMEWORK
+------------------
+${analysis}
+
+PARTNERSHIP ROLE ASSIGNMENTS
+----------------------------
+This action plan includes specific assignments for:
+• St Michael Enterprises (Technical Execution)
+• Republic Capital Access (Financial Support) 
+• Aliff Capital (Business Development)
+
+IMPLEMENTATION SCHEDULE
+----------------------
+Detailed month-by-month execution plan with milestones,
+deliverables, and role-specific responsibilities.
+
+--
+Export from St Michael LLC Federal Opportunities Dashboard
+AI-Generated Strategic Analysis & Planning
+        `;
+        
+        const blob = new Blob([planContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Action_Plan_${actionData.title.replace(/[^a-zA-Z0-9]/g, '_')}_${new Date().toISOString().split('T')[0]}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
     }
 
     launchCapabilityTool(toolId) {
