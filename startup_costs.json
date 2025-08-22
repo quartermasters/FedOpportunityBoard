@@ -1,0 +1,86 @@
+[
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Cost Component",
+    "Unnamed: 1": "Type",
+    "Unnamed: 2": "Details",
+    "Unnamed: 3": "Monthly Cost ($)",
+    "Unnamed: 4": "Justification"
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Direct Costs",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": NaN,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Senior Consultant (2 resources)",
+    "Unnamed: 1": "Labor",
+    "Unnamed: 2": "Loaded cost (salary + benefits)",
+    "Unnamed: 3": 2000,
+    "Unnamed: 4": "Assumes a loaded cost of $13,500/month per consultant based on an average US salary of $120,000/year and a 1.35 multiplier for benefits and taxes."
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Total Direct Costs",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": 2000,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Indirect Costs (Overhead)",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": NaN,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Administrative Salaries",
+    "Unnamed: 1": "Labor",
+    "Unnamed: 2": "Manager, HR, Admin staff",
+    "Unnamed: 3": 1000,
+    "Unnamed: 4": "Covers the loaded cost of a single part-time or full-time administrative staff member."
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Rent & Utilities",
+    "Unnamed: 1": "Overhead",
+    "Unnamed: 2": "Office space, internet, phone",
+    "Unnamed: 3": 500,
+    "Unnamed: 4": "Low-end estimate for a co-working space or virtual office solution for a new startup."
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "General Software- AI and other tools n hosting",
+    "Unnamed: 1": "Overhead",
+    "Unnamed: 2": "QuickBooks, Slack, Asana, etc.",
+    "Unnamed: 3": 1800,
+    "Unnamed: 4": "Essential software subscriptions for general business operations."
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Marketing & Sales",
+    "Unnamed: 1": "Overhead",
+    "Unnamed: 2": "Advertising, networking, website",
+    "Unnamed: 3": 1200,
+    "Unnamed: 4": "Budget for attracting and acquiring new clients."
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Professional Fees",
+    "Unnamed: 1": "Overhead",
+    "Unnamed: 2": "Legal and accounting services",
+    "Unnamed: 3": 500,
+    "Unnamed: 4": "Retainer or periodic fees for legal and financial expertise."
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Total Indirect Costs",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": 5000,
+    "Unnamed: 4": NaN
+  },
+  {
+    "Based on the detailed calculations and justifications, here is the cost breakdown in a clear table format.": "Total Monthly Operating Cost",
+    "Unnamed: 1": NaN,
+    "Unnamed: 2": NaN,
+    "Unnamed: 3": 7000,
+    "Unnamed: 4": "Sum of all direct and indirect costs, representing the total monthly expense to run the company."
+  }
+]

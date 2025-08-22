@@ -416,34 +416,73 @@ window.strategicToolkit = {
 window.costStrategy = {
     phases: [
         {
-            name: "Market Entry & Relationship Building",
-            percentage: 20,
-            description: "DLA TLS prime engagement, OASIS+ preparation, and compliance development including CMMC",
-            budget: "$50K - $150K",
-            duration: "3-6 months"
+            name: "Direct Costs - Senior Consultants",
+            percentage: 28.6,
+            description: "Two senior consultants providing core technical expertise and project delivery capabilities",
+            budget: "$2,000/month",
+            duration: "Ongoing operations"
         },
         {
-            name: "Capture & Proposal Development",
-            percentage: 35,
-            description: "Allocate 3-5% of target contract value for capture activities, proposal writing, and technical solutions",
-            budget: "$75K - $200K",
-            duration: "30-90 days"
+            name: "Administrative Operations",
+            percentage: 14.3,
+            description: "Management and administrative support including HR and general administration",
+            budget: "$1,000/month", 
+            duration: "Ongoing operations"
         },
         {
-            name: "Contract Performance",
-            percentage: 40,
-            description: "Project delivery, quality assurance, and performance management with focus on CPARS ratings",
-            budget: "Contract-dependent",
-            duration: "Contract period"
+            name: "Infrastructure & Technology",
+            percentage: 32.9,
+            description: "Software tools, AI capabilities, hosting, office space, and utilities infrastructure",
+            budget: "$2,300/month",
+            duration: "Ongoing operations"
         },
         {
-            name: "Growth & Expansion",
-            percentage: 5,
-            description: "Leveraging success for additional task orders, vehicle expansion, and prime contractor partnerships",
-            budget: "$25K - $75K",
-            duration: "Ongoing"
+            name: "Business Development & Professional Services",
+            percentage: 24.3,
+            description: "Marketing, sales activities, and professional legal/accounting services",
+            budget: "$1,700/month",
+            duration: "Ongoing operations"
         }
     ],
+    monthlyOperatingCost: {
+        total: 7000,
+        breakdown: {
+            directCosts: 2000,
+            indirectCosts: 5000
+        },
+        details: {
+            "Senior Consultants (2)": {
+                amount: 2000,
+                type: "Labor",
+                description: "Loaded cost including salary, benefits, and taxes at $120K base salary with 1.35 multiplier"
+            },
+            "Administrative Salaries": {
+                amount: 1000,
+                type: "Labor", 
+                description: "Manager, HR, and administrative staff coverage"
+            },
+            "Rent & Utilities": {
+                amount: 500,
+                type: "Overhead",
+                description: "Office space, internet, phone - co-working or virtual office solution"
+            },
+            "Software & AI Tools": {
+                amount: 1800,
+                type: "Overhead",
+                description: "QuickBooks, AI platforms, hosting, business software subscriptions"
+            },
+            "Marketing & Sales": {
+                amount: 1200,
+                type: "Overhead", 
+                description: "Advertising, networking, website maintenance, client acquisition"
+            },
+            "Professional Fees": {
+                amount: 500,
+                type: "Overhead",
+                description: "Legal and accounting services retainer"
+            }
+        }
+    },
     recommendations: [
         {
             title: "Target DLA TLS Prime Partnerships",
@@ -512,8 +551,8 @@ window.marketData = {
         ]
     },
     costBreakdown: {
-        labels: ['Labor', 'Materials', 'Subcontractors', 'Travel', 'Other Direct', 'Overhead', 'Fee'],
-        data: [45, 15, 20, 3, 5, 8, 4],
-        colors: ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6', '#6B7280', '#EC4899']
+        labels: ['Senior Consultants', 'Administrative', 'Software & AI', 'Office & Utilities', 'Marketing & Sales', 'Professional Fees'],
+        data: [28.6, 14.3, 25.7, 7.1, 17.1, 7.1],
+        colors: ['#0a3161', '#3B82F6', '#10B981', '#F59E0B', '#b31942', '#6B7280']
     }
 };

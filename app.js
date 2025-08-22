@@ -703,7 +703,28 @@ class FederalDashboard {
         const costRecommendations = document.getElementById('cost-recommendations');
 
         if (costPhases) {
-            costPhases.innerHTML = window.costStrategy.phases.map(phase => `
+            // Add monthly operating cost summary at the top
+            const monthlyCostSummary = `
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                    <h4 class="font-semibold text-blue-800 mb-2">St Michael LLC Monthly Operating Cost</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div class="text-center">
+                            <span class="text-2xl font-bold text-blue-600">$${window.costStrategy.monthlyOperatingCost.total.toLocaleString()}</span>
+                            <p class="text-gray-600">Total Monthly</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="text-xl font-bold text-green-600">$${window.costStrategy.monthlyOperatingCost.breakdown.directCosts.toLocaleString()}</span>
+                            <p class="text-gray-600">Direct Costs</p>
+                        </div>
+                        <div class="text-center">
+                            <span class="text-xl font-bold text-orange-600">$${window.costStrategy.monthlyOperatingCost.breakdown.indirectCosts.toLocaleString()}</span>
+                            <p class="text-gray-600">Indirect Costs</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            costPhases.innerHTML = monthlyCostSummary + window.costStrategy.phases.map(phase => `
                 <div class="border rounded-lg p-4">
                     <div class="flex justify-between items-center mb-2">
                         <h4 class="font-semibold text-gray-800">${phase.name}</h4>
@@ -719,6 +740,26 @@ class FederalDashboard {
                             <strong class="text-gray-700">Duration:</strong>
                             <p class="text-gray-600">${phase.duration}</p>
                         </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Populate detailed cost breakdown
+        const detailedCosts = document.getElementById('detailed-costs');
+        if (detailedCosts) {
+            detailedCosts.innerHTML = Object.entries(window.costStrategy.monthlyOperatingCost.details).map(([item, detail]) => `
+                <div class="flex items-start p-3 border rounded-lg hover:bg-gray-50">
+                    <div class="flex-shrink-0 w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3 mt-0.5">
+                        <span class="text-sm font-bold text-gray-600">$</span>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start">
+                            <h4 class="font-medium text-gray-800">${item}</h4>
+                            <span class="text-lg font-bold text-blue-600">$${detail.amount.toLocaleString()}</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">${detail.description}</p>
+                        <span class="inline-block mt-1 px-2 py-1 text-xs font-medium rounded-full ${detail.type === 'Labor' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}">${detail.type}</span>
                     </div>
                 </div>
             `).join('');
