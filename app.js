@@ -706,7 +706,10 @@ class FederalDashboard {
             // Add monthly operating cost summary at the top
             const monthlyCostSummary = `
                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                    <h4 class="font-semibold text-blue-800 mb-2">St Michael LLC Monthly Operating Cost</h4>
+                    <h4 class="font-semibold text-blue-800 mb-2">Monthly Operating Cost Structure</h4>
+                    <div class="mb-3 text-sm text-blue-700 bg-blue-100 rounded p-2">
+                        <strong>Cost Responsibility:</strong> ${window.costStrategy.monthlyOperatingCost.responsibleParty} bears all business process and operational expenses
+                    </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                         <div class="text-center">
                             <span class="text-2xl font-bold text-blue-600">$${window.costStrategy.monthlyOperatingCost.total.toLocaleString()}</span>

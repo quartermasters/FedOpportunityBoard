@@ -6,6 +6,13 @@ This is a comprehensive web-based dashboard designed for St Michael LLC to analy
 
 Updated with revised startup costs showing $11,000 monthly operating cost (previously $7,000) with enhanced administrative capabilities including 3 senior consultants and comprehensive administrative support team.
 
+## Partnership Structure
+
+The business operates through a three-partner structure:
+- **St Michael LLC**: Main contractor responsible for proposal submission and contract performance
+- **Republic Capital Access**: Provides capital for contract performance as loans, receiving percentage of profits for each capital injection
+- **Aliff Capital**: Responsible for all business processes and operational expenses (bears the $11,000 monthly costs)
+
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.

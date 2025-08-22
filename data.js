@@ -446,6 +446,7 @@ window.costStrategy = {
     ],
     monthlyOperatingCost: {
         total: 11000,
+        responsibleParty: "Aliff Capital",
         breakdown: {
             directCosts: 2100,
             indirectCosts: 8900
@@ -484,6 +485,12 @@ window.costStrategy = {
         }
     },
     recommendations: [
+        {
+            title: "Leverage Three-Partner Structure",
+            description: "Utilize St Michael LLC for contract performance, Republic Capital Access for project financing, and Aliff Capital for business operations to optimize bid competitiveness.",
+            impact: "High",
+            difficulty: "Low"
+        },
         {
             title: "Target DLA TLS Prime Partnerships",
             description: "Focus on the $33B SOE, $7B F&ESE, and $1.9B MRO TLS programs through established prime vendors for immediate market entry.",
