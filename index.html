@@ -524,20 +524,21 @@
                                     <div class="space-y-3">
                                         <div>
                                             <label class="block text-sm font-medium text-gray-600 mb-1">Contract Value ($)</label>
-                                            <input type="number" id="ai-contract-value" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="1000000" value="1000000">
+                                            <input type="number" id="ai-contract-value" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Enter contract value">
                                         </div>
                                         <div>
                                             <label class="block text-sm font-medium text-gray-600 mb-1">Contract Duration (months)</label>
-                                            <input type="number" id="ai-contract-duration" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="12" value="12">
+                                            <input type="number" id="ai-contract-duration" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" placeholder="Contract duration in months">
                                         </div>
                                         <div>
                                             <label class="block text-sm font-medium text-gray-600 mb-1">Technical Complexity (1-10)</label>
-                                            <input type="range" id="ai-technical-complexity" min="1" max="10" value="7" class="w-full">
-                                            <div class="text-sm text-gray-500 text-center" id="ai-complexity-display">7</div>
+                                            <input type="range" id="ai-technical-complexity" min="1" max="10" value="5" class="w-full">
+                                            <div class="text-sm text-gray-500 text-center" id="ai-complexity-display">5</div>
                                         </div>
                                         <div>
                                             <label class="block text-sm font-medium text-gray-600 mb-1">Agency Type</label>
                                             <select id="ai-agency-type" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                                <option value="">Select agency type...</option>
                                                 <option value="dod">Department of Defense</option>
                                                 <option value="civilian">Civilian Agency</option>
                                                 <option value="intel">Intelligence Community</option>
@@ -547,8 +548,9 @@
                                         <div>
                                             <label class="block text-sm font-medium text-gray-600 mb-1">Competition Level</label>
                                             <select id="competition-level" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                                                <option value="">Select competition level...</option>
                                                 <option value="low">Low (2-3 bidders)</option>
-                                                <option value="medium" selected>Medium (4-6 bidders)</option>
+                                                <option value="medium">Medium (4-6 bidders)</option>
                                                 <option value="high">High (7+ bidders)</option>
                                             </select>
                                         </div>

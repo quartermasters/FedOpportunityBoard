@@ -335,16 +335,17 @@ class FederalDashboard {
     setupAdvancedAICalculator() {
         // Business processes that determine value distribution
         const businessProcesses = [
-            { id: 'business-development', name: 'Business Development & Lead Generation', weight: 15 },
-            { id: 'proposal-writing', name: 'Proposal Writing & Submission', weight: 12 },
-            { id: 'technical-execution', name: 'Technical Execution & Delivery', weight: 18 },
-            { id: 'financial-management', name: 'Financial Management & Funding', weight: 14 },
-            { id: 'compliance-management', name: 'Compliance & Regulatory Management', weight: 10 },
+            { id: 'business-development', name: 'Business Development & Lead Generation', weight: 14 },
+            { id: 'proposal-writing', name: 'Proposal Writing & Submission', weight: 11 },
+            { id: 'technical-execution', name: 'Technical Execution & Delivery', weight: 16 },
+            { id: 'financial-management', name: 'Financial Management & Accounting', weight: 8 },
+            { id: 'funding-capital', name: 'Funding & Capital Access', weight: 10 },
+            { id: 'compliance-management', name: 'Compliance & Regulatory Management', weight: 9 },
             { id: 'project-management', name: 'Project Management & QA', weight: 8 },
             { id: 'customer-relations', name: 'Customer Relationship Management', weight: 7 },
             { id: 'procurement-supply', name: 'Procurement & Supply Chain', weight: 6 },
             { id: 'hr-talent', name: 'HR & Talent Management', weight: 5 },
-            { id: 'innovation-strategy', name: 'Innovation & Strategic Planning', weight: 5 }
+            { id: 'innovation-strategy', name: 'Innovation & Strategic Planning', weight: 6 }
         ];
 
         // Populate process matrix
@@ -357,9 +358,10 @@ class FederalDashboard {
                         <span class="text-xs text-gray-500">${process.weight}% weight</span>
                     </div>
                     <select id="${process.id}-responsibility" class="w-full text-xs px-2 py-1 border border-gray-300 rounded focus:ring-1 focus:ring-blue-500">
+                        <option value="">Select responsible partner...</option>
                         <option value="stmichael">St Michael Enterprises</option>
                         <option value="republic">Republic Capital Access</option>
-                        <option value="aliff" selected>Aliff Capital</option>
+                        <option value="aliff">Aliff Capital</option>
                         <option value="shared-sm-rc">Shared: St Michael + Republic</option>
                         <option value="shared-sm-ac">Shared: St Michael + Aliff</option>
                         <option value="shared-rc-ac">Shared: Republic + Aliff</option>
@@ -400,7 +402,8 @@ class FederalDashboard {
             'business-development': 'aliff',
             'proposal-writing': 'aliff',
             'technical-execution': 'stmichael',
-            'financial-management': 'republic',
+            'financial-management': 'aliff',
+            'funding-capital': 'republic',
             'compliance-management': 'shared-sm-ac',
             'project-management': 'stmichael',
             'customer-relations': 'stmichael',
@@ -429,8 +432,8 @@ class FederalDashboard {
         const processResponsibilities = {};
         const businessProcesses = [
             'business-development', 'proposal-writing', 'technical-execution', 'financial-management',
-            'compliance-management', 'project-management', 'customer-relations', 'procurement-supply',
-            'hr-talent', 'innovation-strategy'
+            'funding-capital', 'compliance-management', 'project-management', 'customer-relations', 
+            'procurement-supply', 'hr-talent', 'innovation-strategy'
         ];
 
         businessProcesses.forEach(processId => {
@@ -453,16 +456,17 @@ class FederalDashboard {
     calculateAIDistribution(contractValue, duration, complexity, agencyType, competitionLevel, responsibilities) {
         // Process weights
         const processWeights = {
-            'business-development': 15,
-            'proposal-writing': 12,
-            'technical-execution': 18,
-            'financial-management': 14,
-            'compliance-management': 10,
+            'business-development': 14,
+            'proposal-writing': 11,
+            'technical-execution': 16,
+            'financial-management': 8,
+            'funding-capital': 10,
+            'compliance-management': 9,
             'project-management': 8,
             'customer-relations': 7,
             'procurement-supply': 6,
             'hr-talent': 5,
-            'innovation-strategy': 5
+            'innovation-strategy': 6
         };
 
         // Calculate base allocation based on responsibilities
@@ -730,10 +734,11 @@ Provide 3-4 market-based rules that justify this distribution.`;
                 const data = await response.json();
                 const explanationDiv = document.getElementById('ai-explanation');
                 if (explanationDiv && data.response) {
+                    const richText = this.convertToRichText(data.response);
                     explanationDiv.innerHTML = `
                         <div class="bg-white rounded-lg p-4 border border-gray-200">
                             <h6 class="font-semibold text-gray-800 mb-2">AI Market Analysis</h6>
-                            <div class="text-sm text-gray-700 whitespace-pre-line">${data.response}</div>
+                            <div class="text-sm text-gray-700">${richText}</div>
                         </div>
                     `;
                 }
@@ -741,6 +746,39 @@ Provide 3-4 market-based rules that justify this distribution.`;
         } catch (error) {
             console.log('AI explanation not available:', error.message);
         }
+    }
+
+    convertToRichText(plainText) {
+        if (!plainText) return '';
+        
+        let richText = plainText;
+        
+        // Convert numbered lists (1. 2. 3. etc.)
+        richText = richText.replace(/^\d+\.\s+(.+)$/gm, '<div class="flex items-start space-x-2 mb-2"><span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full">$1</span><span>$2</span></div>');
+        
+        // Convert bullet points (• - *)
+        richText = richText.replace(/^[•\-\*]\s+(.+)$/gm, '<div class="flex items-start space-x-2 mb-2"><span class="text-blue-500 font-bold">•</span><span>$1</span></div>');
+        
+        // Convert **bold** text
+        richText = richText.replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-gray-800">$1</strong>');
+        
+        // Convert *italic* text
+        richText = richText.replace(/\*(.+?)\*/g, '<em class="italic text-gray-700">$1</em>');
+        
+        // Convert headings (## text)
+        richText = richText.replace(/^##\s+(.+)$/gm, '<h4 class="font-semibold text-gray-800 text-lg mb-3 mt-4">$1</h4>');
+        
+        // Convert line breaks to proper spacing
+        richText = richText.replace(/\n\n/g, '</div><div class="mb-4">');
+        richText = richText.replace(/\n/g, '<br>');
+        
+        // Wrap content in container div
+        richText = `<div class="space-y-2">${richText}</div>`;
+        
+        // Clean up any malformed HTML
+        richText = richText.replace(/<\/div><div class="mb-4"><\/div>/g, '</div><div class="mb-4">');
+        
+        return richText;
     }
 
     performMarketBenchmark() {
