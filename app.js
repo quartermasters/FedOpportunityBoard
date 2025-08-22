@@ -225,6 +225,17 @@ class FederalDashboard {
                     <div><strong>Rating:</strong> ${'★'.repeat(prime.rating)}${'☆'.repeat(5-prime.rating)}</div>
                 </div>
                 
+                <div class="mb-3">
+                    <a href="${prime.vendorPortalUrl}" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center px-4 py-2 text-white font-medium text-sm rounded-lg transition-all duration-200" 
+                       style="background-color: #0a3161;" 
+                       onmouseover="this.style.backgroundColor='#b31942'" 
+                       onmouseout="this.style.backgroundColor='#0a3161'">
+                        <i data-feather="external-link" class="w-4 h-4 mr-2"></i>
+                        Vendor Portal Link
+                    </a>
+                </div>
+                
                 <div class="expandable-content" id="prime-details-${prime.id}">
                     <div class="border-t pt-3 mt-3">
                         <h5 class="font-semibold text-gray-800 mb-2">Core Capabilities:</h5>

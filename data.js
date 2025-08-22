@@ -169,7 +169,8 @@ window.primeContractors = [
             "Aegis Combat System modernization - $3.2B",
             "Space Fence radar system - $1.5B"
         ],
-        subcontractingOpportunities: "Advanced manufacturing, software development, systems integration, and specialized engineering services across defense and aerospace programs."
+        subcontractingOpportunities: "Advanced manufacturing, software development, systems integration, and specialized engineering services across defense and aerospace programs.",
+        vendorPortalUrl: "https://www.lockheedmartin.com/en-us/suppliers/supplier-portal.html"
     },
     {
         id: 2,
@@ -184,7 +185,8 @@ window.primeContractors = [
             "Army tactical vehicle production - $4.6B",
             "Navy destroyer modernization - $2.1B"
         ],
-        subcontractingOpportunities: "Precision manufacturing, software development, systems testing, and specialized component production for defense platforms."
+        subcontractingOpportunities: "Precision manufacturing, software development, systems testing, and specialized component production for defense platforms.",
+        vendorPortalUrl: "https://www.gd.com/suppliers"
     },
     {
         id: 3,
@@ -199,7 +201,8 @@ window.primeContractors = [
             "James Webb Space Telescope operations - $2.5B",
             "Ground Based Strategic Deterrent - $13.3B"
         ],
-        subcontractingOpportunities: "Advanced materials, precision manufacturing, software development, and specialized engineering for aerospace and defense systems."
+        subcontractingOpportunities: "Advanced materials, precision manufacturing, software development, and specialized engineering for aerospace and defense systems.",
+        vendorPortalUrl: "https://www.northropgrumman.com/suppliers/"
     },
     {
         id: 4,
@@ -214,7 +217,8 @@ window.primeContractors = [
             "Navy IT modernization support - $1.8B",
             "CDC data analytics platform - $750M"
         ],
-        subcontractingOpportunities: "Data analytics, cloud migration services, cybersecurity implementations, and digital transformation consulting."
+        subcontractingOpportunities: "Data analytics, cloud migration services, cybersecurity implementations, and digital transformation consulting.",
+        vendorPortalUrl: "https://www.boozallen.com/careers/working-with-us.html"
     },
     {
         id: 5,
@@ -229,7 +233,8 @@ window.primeContractors = [
             "DHS cybersecurity operations - $1.2B",
             "VA electronic health records support - $800M"
         ],
-        subcontractingOpportunities: "Intelligence analysis support, cybersecurity services, data management, and specialized IT consulting."
+        subcontractingOpportunities: "Intelligence analysis support, cybersecurity services, data management, and specialized IT consulting.",
+        vendorPortalUrl: "https://www.caci.com/suppliers"
     },
     {
         id: 6,
@@ -244,7 +249,8 @@ window.primeContractors = [
             "DoD enterprise cloud migration - $1.5B",
             "HHS data analytics platform - $650M"
         ],
-        subcontractingOpportunities: "Cloud migration services, data analytics, user experience design, and change management consulting."
+        subcontractingOpportunities: "Cloud migration services, data analytics, user experience design, and change management consulting.",
+        vendorPortalUrl: "https://www.accenture.com/us-en/careers/jobsearch"
     },
     {
         id: 7,
@@ -259,7 +265,8 @@ window.primeContractors = [
             "DLA TLS F&ESE Program - $7B IDIQ",
             "Survival and tactical equipment supply"
         ],
-        subcontractingOpportunities: "Tactical equipment, survival gear, SCBA equipment, communications devices, and specialized training services for military and federal agencies."
+        subcontractingOpportunities: "Tactical equipment, survival gear, SCBA equipment, communications devices, and specialized training services for military and federal agencies.",
+        vendorPortalUrl: "https://www.adsinc.com/suppliers"
     },
     {
         id: 8,
@@ -274,7 +281,8 @@ window.primeContractors = [
             "DLA TLS F&ESE Program - $7B IDIQ",
             "CBRNE capability integration services"
         ],
-        subcontractingOpportunities: "CBRNE equipment, fire and emergency services, rapid supply capabilities, and comprehensive life-cycle sustainment solutions."
+        subcontractingOpportunities: "CBRNE equipment, fire and emergency services, rapid supply capabilities, and comprehensive life-cycle sustainment solutions.",
+        vendorPortalUrl: "https://www.federalresources.com/suppliers"
     },
     {
         id: 9,
@@ -289,7 +297,8 @@ window.primeContractors = [
             "DLA TLS SOE and F&ESE Programs",
             "Comprehensive facility maintenance support"
         ],
-        subcontractingOpportunities: "MRO supplies, HVAC and electrical equipment, construction materials, environmental products, and specialized logistics services."
+        subcontractingOpportunities: "MRO supplies, HVAC and electrical equipment, construction materials, environmental products, and specialized logistics services.",
+        vendorPortalUrl: "https://www.noblesupply.com/vendor-registration"
     },
     {
         id: 10,
@@ -304,7 +313,8 @@ window.primeContractors = [
             "DLA TLS MRO Program - Facility supplies",
             "DLA TLS F&ESE Program - Emergency equipment"
         ],
-        subcontractingOpportunities: "Tactical communications, unmanned systems, training equipment, facility MRO supplies, and technology-enabled procurement solutions."
+        subcontractingOpportunities: "Tactical communications, unmanned systems, training equipment, facility MRO supplies, and technology-enabled procurement solutions.",
+        vendorPortalUrl: "https://www.supplycore.com/vendor-portal"
     }
 ];
 
