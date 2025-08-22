@@ -1,14 +1,14 @@
 // Main application controller
 class FederalDashboard {
     constructor() {
-        this.currentSection = 'market-overview';
+        this.currentSection = 'about-us';
         this.init();
     }
 
     init() {
         this.setupEventListeners();
         this.updateTimestamp();
-        this.loadSection('market-overview');
+        this.loadSection('about-us');
         this.initializeCharts();
         this.populateContractVehicles();
         this.populatePrimeContractors();
@@ -166,6 +166,30 @@ class FederalDashboard {
             window.dashboardCharts.initTimelineChart();
             window.dashboardCharts.initCostChart();
         }, 100);
+    }
+
+    initializeAboutUs() {
+        // Add any About Us specific initialization
+        const partnerCircles = document.querySelectorAll('.partner-circle');
+        const partnerDetails = document.querySelectorAll('.partner-detail');
+        
+        partnerCircles.forEach(circle => {
+            circle.addEventListener('mouseenter', () => {
+                const partnerId = circle.getAttribute('data-partner');
+                const targetDetail = document.getElementById(`${partnerId}-details`);
+                if (targetDetail) {
+                    targetDetail.style.transform = 'scale(1.02)';
+                    targetDetail.style.boxShadow = '0 10px 25px rgba(0,0,0,0.15)';
+                }
+            });
+            
+            circle.addEventListener('mouseleave', () => {
+                partnerDetails.forEach(detail => {
+                    detail.style.transform = 'scale(1)';
+                    detail.style.boxShadow = '';
+                });
+            });
+        });
     }
 
     populateContractVehicles() {
