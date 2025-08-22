@@ -1,0 +1,68 @@
+{
+  "name": "st-michael-dashboard",
+  "version": "1.0.0",
+  "main": "main.js",
+  "homepage": "./",
+  "scripts": {
+    "start": "node server.js",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm start\" \"wait-on http://localhost:5000 && electron .\"",
+    "build-win": "electron-builder --win",
+    "build-win-portable": "electron-builder --win portable",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.aliffcapital.stmichael.dashboard",
+    "productName": "St Michael LLC Dashboard",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/@electron/",
+      "!dist/",
+      "!docs/",
+      "!*.md",
+      "!build-windows.js",
+      "!package-electron.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "publisherName": "Aliff Capital",
+      "verifyUpdateCodeSignature": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "St Michael LLC Dashboard"
+    },
+    "portable": {
+      "artifactName": "StMichaelDashboard-Portable.exe"
+    }
+  },
+  "keywords": ["federal", "contracting", "dashboard", "government"],
+  "author": "Aliff Capital",
+  "license": "ISC",
+  "description": "St Michael LLC Federal Opportunities Dashboard - A comprehensive federal subcontracting market analysis tool",
+  "dependencies": {
+    "concurrently": "^9.2.0",
+    "cors": "^2.8.5",
+    "electron": "^37.3.1",
+    "electron-builder": "^26.0.12",
+    "express": "^4.18.2",
+    "openai": "^5.15.0"
+  }
+}

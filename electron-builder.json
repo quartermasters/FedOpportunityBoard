@@ -1,0 +1,47 @@
+{
+  "appId": "com.aliffcapital.stmichael.dashboard",
+  "productName": "St Michael LLC Dashboard",
+  "directories": {
+    "output": "dist"
+  },
+  "files": [
+    "**/*",
+    "!node_modules/@electron/",
+    "!dist/",
+    "!docs/",
+    "!*.md"
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      },
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      }
+    ],
+    "icon": "assets/icon.ico",
+    "publisherName": "Aliff Capital",
+    "verifyUpdateCodeSignature": false
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": true,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "St Michael LLC Dashboard"
+  },
+  "portable": {
+    "artifactName": "StMichaelDashboard-Portable.exe"
+  },
+  "extraResources": [
+    {
+      "from": ".",
+      "to": "app",
+      "filter": ["**/*", "!node_modules/**/*", "!dist/**/*"]
+    }
+  ]
+}
